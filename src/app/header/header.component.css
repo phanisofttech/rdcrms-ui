@@ -1,3 +1,35 @@
 .header {
-    background-color: blueviolet;
-}
+    height: 70px;
+    padding: 20px 50px;
+    background-color: rgb(1, 38, 69);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 5px 5px 5px #939393;
+    margin-left: 70px;
+    margin-top: -8px;
+    .logo {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    
+    .user {
+      display: flex;
+      text-align: center;
+      align-items: center;
+      font-weight: bold;
+      .user-image {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        background-color: rgb(11, 107, 185);
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+    }
+  }
+  
