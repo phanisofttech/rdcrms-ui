@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class LeftNavComponent {
 
+ toggeleMenu(): void {
+    let className = document.getElementById('side-bar')?.className;
+    let ele: any = document.getElementById('side-bar') == null ? "" : document.getElementById('side-bar');
+    
+    if(className === 'sidebar') {
+      ele.className = 'sidebar close';
+    }else {
+      ele.className = 'sidebar';
+    }
+    
+
+ }
+
 }
