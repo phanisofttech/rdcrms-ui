@@ -10,6 +10,8 @@ import { LeftNavComponent } from './left-nav/left-nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { ButtonModule } from 'primeng/button';
 import { ReportsComponent } from './reports/reports.component';
+import { UserRegisterationComponent } from './registration/user-registeration/user-registeration.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import { ReportsComponent } from './reports/reports.component';
     HeaderComponent,
     LeftNavComponent,
     FooterComponent,
-    ReportsComponent
+    ReportsComponent,
+    UserRegisterationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ButtonModule
+    ButtonModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration()
