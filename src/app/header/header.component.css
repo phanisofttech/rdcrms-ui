@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     box-shadow: 5px 5px 5px #939393;
-    margin-left: 70px;
+    margin-left: 0px;
     margin-top: -8px;
     .logo {
       font-weight: bold;
