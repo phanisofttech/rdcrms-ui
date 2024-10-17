@@ -7,20 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserRegisterationComponent implements OnInit{
 
-  adharNumber: number = 100;
+  aadhaarNumber: number = 945271849457;
+  otp: number=1212;
+  generatedPassword:String ="hsjskaa87ab";
   
   constructor() {
   }
   
   ngOnInit(): void {
   }
-
-
-  validateAdhar(): void {
-    console.log("adhar number is: "+this.adharNumber);
+  
+  onValidateAadhaarNumber() {
+    console.log("Aadhaar Number Submitted:", this.aadhaarNumber);
   }
 
-  
+  onVerifyOtp() {
+    console.log("OTP Submitted:", this.otp);
+  }
   
 
 }
