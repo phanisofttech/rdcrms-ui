@@ -1,3 +1,132 @@
-#container {
-    background-color: cyan;
+body {
+    background-color: #C3E0CC;
+}
+
+.container {
+    display: flex;
+    height: 90vh;
+    width: 90%;
+    margin-left: 100px;
+    border-radius: 100px;
+    margin-top: 40px;
+}
+
+.left-column {
+    flex: 1;
+    background-color: #E6FEEE;
+    padding: 30px;
+    text-align: center;
+}
+
+.left-column h3 {
+    font-size: 35px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 300px;
+}
+
+.left-column p {
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: gray;
+}
+
+.right-column {
+    flex: 0.7;
+    background-color: #FAFFFB;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem;
+    padding-right: 40px;
+}
+
+.cn {
+    margin-top: 150px;
+    margin-right: 150px;
+    position: relative;
+    font-size: 14px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(171, 170, 170);
+    border-spacing: 30px;
+    text-align: left;
+}
+
+#username {
+    background-color: #ffffff;
+    border-radius: 5px;
+    border-color: rgb(201, 198, 198);
+    width: 280px;
+    height: 30px;
+    text-align: left;
+    color: black;
+    font-size: 15px;
+    margin: 8px 0;
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#password {
+    background-color: #ffffff;
+    border-radius: 5px;
+    border-color: rgb(201, 198, 198);
+    ;
+    width: 280px;
+    height: 30px;
+    text-align: left;
+    color: black;
+    font-size: 15px;
+    margin: 8px 0;
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cn a {
+    color: green;
+    margin-left: 200px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 13px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    padding: 12px 35px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 96%;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+p {
+    text-align: center;
+    font-size: 17px;
+}
+
+.sign {
+    text-align: center;
+    font-size: 13px;
+}
+
+.footer a {
+    margin-bottom: 20px;
+    font-size: 13px;
+    padding-right: 120px;
+    color: green;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.footer {
+    font-size: 13px;
+    color: gray;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Optional: Ensure content is responsive */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
 }
