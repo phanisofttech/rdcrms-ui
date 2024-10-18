@@ -12,6 +12,11 @@ import { ButtonModule } from 'primeng/button';
 import { ReportsComponent } from './reports/reports.component';
 import { UserRegisterationComponent } from './registration/user-registeration/user-registeration.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -28,10 +33,15 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    ToastModule,
+    BrowserAnimationsModule,
+    ProgressSpinnerModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
