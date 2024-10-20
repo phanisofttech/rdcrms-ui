@@ -12,13 +12,11 @@ export class RegistrationServiceService {
   constructor(private http: HttpClient) { }
 
 
-  public getOTPByAdharNumber(adharNumber: number) {
-    console.log("this is service");
+  public getOTPByAadhaarNumber(adharNumber: number) {
     return this.http.post(this.localApiUrl + `otp/${adharNumber}`, "");
   }
 
   getPasswordByOtp(otp: number, aadhaarNumber: number) {
-    console.log("otp service is cmg");
     return this.http.post(this.localApiUrl + `password/${aadhaarNumber}/${otp}`, " ");
   }
 }

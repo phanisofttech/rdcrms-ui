@@ -28,10 +28,8 @@ export class UserRegisterationComponent implements OnInit {
 
   onValidateAadhaarNumber() {
     this.showSpinner = true;
-    console.log("Aadhaar Number Submitted:", this.aadhaarNumber);
-    this.regService.getOTPByAdharNumber(this.aadhaarNumber).subscribe(
+    this.regService.getOTPByAadhaarNumber(this.aadhaarNumber).subscribe(
       response => {
-        console.log("api response: " + JSON.stringify(response));
         this.assignToMessage(response);
         this.otpSent = true;
       },
@@ -45,11 +43,9 @@ export class UserRegisterationComponent implements OnInit {
 
   onVerifyOtp() {
     this.showSpinner = true;
-    console.log("OTP Submitted:", this.otp);
     this.regService.getPasswordByOtp(this.otp, this.aadhaarNumber).subscribe(
       response => {
         this.showSpinner = false;
-        console.log("api response: " + JSON.stringify(response));
         this.assignToMessage(response);
         this.loginLink = true;
       },
@@ -63,7 +59,6 @@ export class UserRegisterationComponent implements OnInit {
 
   assignToMessage(resp: any) {
     this.message = resp.message;
-    console.log(" message: " + this.message);
     this.messageService.add({ severity: 'success', summary: this.message });
     this.showSpinner = false;
   }
