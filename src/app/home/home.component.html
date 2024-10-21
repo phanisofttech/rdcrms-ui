@@ -1,11 +1,28 @@
-<div id="container">
+<div class="bg">
+    <div class="container">
+        <!-- Left Column -->
+        <div class="left-column">
+            <img src="assets\images\bgrd.svg" alt="hello" />
+            <h3><b>RDCRMS</b></h3>
+            <p>Revenue department certificate registration<br>management system.We provide the certificates<br> and
+                provide the real-time monitoring.. </p>
+        </div>
 
-    <label> User Name</label>
-    <input type="text" />
-    <label> Password</label>
-    <input type="password" />
-
-    <h3><a routerLink="/dashboard">Login</a></h3>
-    <h3><a routerLink="/register">Register</a></h3>
-
+        <!-- Right Column -->
+        <div class="right-column">
+            <form class="f1">
+                <div class="cn">
+                    <label for="username"><b>Username or email</b></label><br>
+                    <input type="text" id="username" name="username" placeholder="Enter User Name" />
+                    <label for="password"><b>Password</b></label><br>
+                    <input type="password" id="password" name="password" placeholder="Enter Password" />
+                    <a href="#">Forgot password?</a>
+                    <button type="submit">Sign in</button>
+                    <p class="or">------- or -------</p>
+                    <p class="sign">Sign in with Google</p>
+                </div>
+            </form>
+            <p class="footer">Are you new? <a routerLink="/register">Create an account</a></p>
+        </div>
+    </div>
 </div>
