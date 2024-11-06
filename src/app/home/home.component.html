@@ -2,26 +2,29 @@
     <div class="container">
         <!-- Left Column -->
         <div class="left-column">
-            <img src="assets\images\bgrd.svg" alt="hello" />
+            <!-- <img src="assets\images\bgrd.svg" alt="hello" /> -->
             <h3><b>RDCRMS</b></h3>
             <p>Revenue department certificate registration<br>management system.We provide the certificates<br> and
                 provide the real-time monitoring.. </p>
         </div>
-
         <!-- Right Column -->
         <div class="right-column">
-            <form class="f1">
-                <div class="cn">
-                    <label for="username"><b>Username or email</b></label><br>
-                    <input type="text" id="username" name="username" placeholder="Enter User Name" />
-                    <label for="password"><b>Password</b></label><br>
-                    <input type="password" id="password" name="password" placeholder="Enter Password" />
-                    <a href="#">Forgot password?</a>
-                    <button type="submit">Sign in</button>
-                    <p class="or">------- or -------</p>
-                    <p class="sign">Sign in with Google</p>
-                </div>
-            </form>
+            <p-toast />
+            <div *ngIf="showSpinner" class="flex justify-content-center" style="margin-top: 20px;">
+                <p-progressSpinner strokeWidth="8" fill="var(--surface-ground)"
+                    animationDuration=".5s"></p-progressSpinner>
+            </div>
+            <div class="cn">
+                <label for="aadhaarNumber"><b>Aadhaar Number</b></label><br>
+                <input type="text" id="aadhaarNumber" name="aadhaarNumber" [(ngModel)]="aadhaarNumber"
+                    placeholder="Enter Aadhaar Number" />
+                <label for="password"><b>Password</b></label><br>
+                <input type="text" id="password" name="password" [(ngModel)]="password"  placeholder="Enter Password" />
+                <a href="#">Forgot password?</a>
+                <button  type="button" (click)="onValidateLogin()">Sign in</button>
+                <p class="or">------- or -------</p>
+                <p class="sign">Sign in with Google</p>
+            </div>
             <p class="footer">Are you new? <a routerLink="/register">Create an account</a></p>
         </div>
     </div>

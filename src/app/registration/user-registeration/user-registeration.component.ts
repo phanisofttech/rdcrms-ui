@@ -14,8 +14,8 @@ export class UserRegisterationComponent implements OnInit {
   public otp: any;
   public message: string = '';
   public showSpinner: boolean = false;
-  public otpSent: boolean = false;
-  public loginLink: boolean = false;
+  public isOtpSent: boolean = false;
+  public isPasswordSent: boolean = false;
 
   constructor(
     private regService: RegistrationServiceService,
@@ -31,7 +31,7 @@ export class UserRegisterationComponent implements OnInit {
     this.regService.getOTPByAadhaarNumber(this.aadhaarNumber).subscribe(
       response => {
         this.assignToMessage(response);
-        this.otpSent = true;
+        this.isOtpSent = true;
       },
       (error: Error) => {
         this.messageService.add({ severity: 'error', summary: "Failed to send generate OTP" });
@@ -47,12 +47,11 @@ export class UserRegisterationComponent implements OnInit {
       response => {
         this.showSpinner = false;
         this.assignToMessage(response);
-        this.loginLink = true;
+        this.isPasswordSent = true;
       },
       error => {
         this.showSpinner = false;
         this.messageService.add({ severity: 'error', summary: 'Incorrect OTP', detail: 'Password Not Sent .' });
-        console.log("error");
       }
     );
   }
