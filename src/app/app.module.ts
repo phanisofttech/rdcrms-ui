@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +16,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     HttpClientModule,
     ToastModule,
     BrowserAnimationsModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    ChartModule 
   ],
   providers: [
     provideClientHydration(),
