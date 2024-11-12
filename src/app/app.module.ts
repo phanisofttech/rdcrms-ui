@@ -17,6 +17,10 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { CasteComponent } from './caste/caste.component';
+import { IncomeComponent } from './income/income.component';
+import { BirthComponent } from './birth/birth.component';
+import { DeathComponent } from './death/death.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     LeftNavComponent,
     FooterComponent,
     ReportsComponent,
-    UserRegisterationComponent
+    UserRegisterationComponent,
+    CasteComponent,
+    IncomeComponent,
+    BirthComponent,
+    DeathComponent
   ],
   imports: [
     BrowserModule,
