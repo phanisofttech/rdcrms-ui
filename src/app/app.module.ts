@@ -17,6 +17,8 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { AllUsersComponent } from './all-users/all-users.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     LeftNavComponent,
     FooterComponent,
     ReportsComponent,
-    UserRegisterationComponent
+    UserRegisterationComponent,
+    AllUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     HttpClientModule,
     ToastModule,
     BrowserAnimationsModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    TableModule
   ],
   providers: [
     provideClientHydration(),
