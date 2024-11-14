@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +16,13 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ChartModule } from 'primeng/chart';
+import { AllUsersComponent } from './all-users/all-users.component';
+import { TableModule } from 'primeng/table';
+import { CasteComponent } from './caste/caste.component';
+import { IncomeComponent } from './income/income.component';
+import { BirthComponent } from './birth/birth.component';
+import { DeathComponent } from './death/death.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +33,12 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     LeftNavComponent,
     FooterComponent,
     ReportsComponent,
-    UserRegisterationComponent
+    UserRegisterationComponent,
+    AllUsersComponent,
+    CasteComponent,
+    IncomeComponent,
+    BirthComponent,
+    DeathComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +48,9 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     HttpClientModule,
     ToastModule,
     BrowserAnimationsModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    ChartModule,
+    TableModule
   ],
   providers: [
     provideClientHydration(),

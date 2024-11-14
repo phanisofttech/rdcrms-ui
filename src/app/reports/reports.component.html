@@ -1,5 +1,21 @@
-<h1>This is reports page</h1>
-
-<div class="card flex justify-content-center">
-    <p-button label="Submit"></p-button>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <p-chart type="bar" [data]="basicData" [options]="basicOptions" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <p-chart type="line" [data]="data" [options]="options" />
+            </div>
+        </div>
+        <div class="col">
+            <div id="piechart" class="card flex justify-content-center">
+                <p-chart type="doughnut" [data]="data" [options]="options" />
+            </div>
+        </div>
+    </div>
 </div>

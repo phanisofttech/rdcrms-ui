@@ -9,23 +9,25 @@
         <div class="card-body">
           <div class="form-group mb-3">
             <label for="aadhaarNumber">Enter Aadhaar Number</label>
-            <input type="number" id="aadhaarNumber" class="form-control" [(ngModel)]="aadhaarNumber" required>
+            <input type="number" id="aadhaarNumber" class="form-control" [(ngModel)]="aadhaarNumber" required
+              [disabled]="isOtpSent">
           </div>
-          <button type="submit" (click)="onValidateAadhaarNumber()" class="btn btn-primary btn-block">Send OTP</button>
-          <!-- <div>
+          <button type="submit" (click)="onValidateAadhaarNumber()" class="btn btn-primary btn-block" required
+            [disabled]="isOtpSent">Send OTP</button>
+          <div *ngIf="isOtpSent">
             <div class="form-group mb-3">
               <label for="otp">Enter OTP</label>
-              <input type="number" id="otp" class="form-control" [(ngModel)]="otp" name="otp" required>
+              <input type="number" id="otp" class="form-control" [(ngModel)]="otp" name="otp" required
+                [disabled]="isPasswordSent">
             </div>
-            <button type="submit" (click)="onVerifyOtp()" class="btn btn-primary btn-block">Verify OTP</button>
-          </div> -->
-          <!-- <div>
-            <label class="form-label">This is your password, note it:</label>
-            <div class="alert alert-info">{{ generatedPassword }}</div>
+            <button type="submit" (click)="onVerifyOtp()" class="btn btn-primary btn-block" required
+              [disabled]="isPasswordSent">Verify OTP</button>
+          </div>
+          <div *ngIf="isPasswordSent">
             <label class="form-label text-center">
-              <a href="#">Click Here</a> to login
+              <a routerLink="/home">Click Here</a> to login Page.
             </label>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
