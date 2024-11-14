@@ -1,0 +1,24 @@
+/* Style for the p-table */
+.custom-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Add border to table header, body cells, and rows */
+.custom-table th,
+.custom-table td {
+    border: 2px solid #1d1515;
+    padding: 11px;
+}
+
+.custom-table th {
+    font-style: italic;
+    font-size: large;
+    ;
+}
+
+/* Optional styling for header */
+.custom-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}

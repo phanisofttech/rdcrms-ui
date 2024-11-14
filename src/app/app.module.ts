@@ -17,10 +17,13 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { AllUsersComponent } from './all-users/all-users.component';
+import { TableModule } from 'primeng/table';
 import { CasteComponent } from './caste/caste.component';
 import { IncomeComponent } from './income/income.component';
 import { BirthComponent } from './birth/birth.component';
 import { DeathComponent } from './death/death.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { DeathComponent } from './death/death.component';
     FooterComponent,
     ReportsComponent,
     UserRegisterationComponent,
+    AllUsersComponent,
     CasteComponent,
     IncomeComponent,
     BirthComponent,
@@ -45,7 +49,8 @@ import { DeathComponent } from './death/death.component';
     HttpClientModule,
     ToastModule,
     BrowserAnimationsModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    TableModule
   ],
   providers: [
     provideClientHydration(),
