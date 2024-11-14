@@ -17,6 +17,12 @@ import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ChartModule } from 'primeng/chart';
+import { AllUsersComponent } from './all-users/all-users.component';
+import { TableModule } from 'primeng/table';
+import { CasteComponent } from './caste/caste.component';
+import { IncomeComponent } from './income/income.component';
+import { BirthComponent } from './birth/birth.component';
+import { DeathComponent } from './death/death.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +33,12 @@ import { ChartModule } from 'primeng/chart';
     LeftNavComponent,
     FooterComponent,
     ReportsComponent,
-    UserRegisterationComponent
+    UserRegisterationComponent,
+    AllUsersComponent,
+    CasteComponent,
+    IncomeComponent,
+    BirthComponent,
+    DeathComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +49,8 @@ import { ChartModule } from 'primeng/chart';
     ToastModule,
     BrowserAnimationsModule,
     ProgressSpinnerModule,
-    ChartModule 
+    ChartModule,
+    TableModule
   ],
   providers: [
     provideClientHydration(),
