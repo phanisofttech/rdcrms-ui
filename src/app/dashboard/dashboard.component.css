@@ -1,0 +1,8 @@
+.grid {
+    position: sticky;
+    top: 0%;
+}
+#right-body {
+    padding-top: 30px;
+    margin-left: -65px;
+}

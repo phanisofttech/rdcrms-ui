@@ -1,35 +1,52 @@
+
+/* Header container styling */
 .header {
-    height: 70px;
-    padding: 20px 50px;
-    background-color: rgb(1, 38, 69);
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 5px 5px 5px #939393;
-    margin-left: 0px;
-    margin-top: -8px;
-    .logo {
-      font-weight: bold;
-      font-size: 20px;
-    }
-    
-    .user {
-      display: flex;
-      text-align: center;
-      align-items: center;
-      font-weight: bold;
-      .user-image {
-        width: 75px;
-        height: 75px;
-        border-radius: 50%;
-        border: 2px solid #fff;
-        background-color: rgb(11, 107, 185);
-        margin-left: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-      }
-    }
-  }
-  
+  height: 70px;
+  padding: 20px 50px;
+  background-color: rgb(1, 38, 69);
+  /* Dark blue background */
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 5px 5px 5px #939393;
+  margin-top: -8px;
+  margin-bottom: -7px;
+} 
+
+/* User section styling on the left */
+.user {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+/* User image styling */
+.user-image {
+  width: 75px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background-color: rgb(11, 107, 185);
+  /* Lighter blue */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-right: 20px;
+  color: #fff;
+}
+
+/* Marquee styling */
+.user-name marquee {
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Logo styling on the right */
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+}
