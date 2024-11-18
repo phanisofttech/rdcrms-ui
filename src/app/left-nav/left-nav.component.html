@@ -1,17 +1,30 @@
 <div class="sidebar">
-  <a href="#">Dashboard</a>
-  <a href="#">Certificates</a>
-  <a href="#">Applications</a>
-
-  <!-- Dropdown Menu -->
+  <a routerLink="reports">Dashboard</a>
+  <!-- Dropdown Menu for Admin -->
   <div class="dropdown">
-    <a href="#">Reports</a>
+    <a routerLink="#">Admin</a>
     <div class="dropdown-content">
-      <a href="webdesign.html">Web Design</a>
-      <a href="#">SEO</a>
-      <a href="#">Consulting</a>
+      <a routerLink="all-users">All-Users</a>
     </div>
   </div>
-  <a href="#">Contact</a>
+  <!-- Dropdown Menu for forms -->
+  <div class="dropdown">
+    <a routerLink="#">Application Forms</a>
+    <div class="dropdown-content">
+      <a routerLink="caste">Caste Application Form</a>
+      <a routerLink="income">Income Application Form</a>
+      <a routerLink="birth">Birth Application Form</a>
+      <a routerLink="death">Death Application Form</a>
+    </div>
+  </div>
+  <!-- Dropdown Menu -->
+  <div class="dropdown">
+    <a routerLink="#">Reports</a>
+    <div class="dropdown-content">
+      <a routerLink="#">Web Design</a>
+      <a routerLink="#">SEO</a>
+      <a routerLink="#">Consulting</a>
+    </div>
+  </div>
+  <a routerLink="#">Contact</a>
 </div>
-  
