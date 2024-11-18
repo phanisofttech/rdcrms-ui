@@ -1,3 +1,7 @@
+<div *ngIf="showSpinner" class="flex justify-content-center mt-5">
+    <p-progressSpinner strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s" />
+</div>
+<div *ngIf="isUserPresent" class="users-tbl">
 <p-table [value]="users" responsiveLayout="scroll" class="custom-table">
     <ng-template pTemplate="header">
         <tr>
@@ -18,3 +22,4 @@
         </tr>
     </ng-template>
 </p-table>
+</div>
