@@ -18,11 +18,17 @@ export class AllUsersComponent implements OnInit {
   }
   users: UserResponse[] = [];
 
+  isUserPresent : boolean = false ;
+
+  showSpinner: boolean = false;
+
   displayAllUsers() {
+    this.showSpinner=true;
     this.allUserService.getAllUsers().subscribe(
       (response: UserResponse[]) => {
         this.users = response;
-        console.log(JSON.stringify(response))
+        this.isUserPresent = true ;
+        this.showSpinner=false;
       }
     );
   }
