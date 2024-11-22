@@ -1,86 +1,172 @@
 <div class="container my-5">
+  <p-toast />
+  <div *ngIf="showSpinner" class="flex justify-content-center" style="margin-top: 20px;">
+    <p-progressSpinner strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
+  </div>
+
+  <div *ngIf="isFormSubmit" class="container mt-5">
+    <!-- Success Alert -->
+    <div class="alert alert-success text-center" role="alert">
+      <strong>Your Birth form has been successfully submitted!</strong>
+      <h6>thank you</h6>
+    </div>
+  </div>
   <!-- Card for the form -->
-  <div class="card" id="cardsStyle">
+  <div *ngIf="isRequestSend" class="card" id="cardsStyle">
     <div class="card-header">
       Death Certificate Application Form
     </div>
     <div class="card-body">
-      <form>
+      <form [formGroup]="deathForm" (ngSubmit)="saveDeathFormInfo()">
         <!-- Full Name -->
         <div class="mb-3">
           <label for="fullName" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="fullName" placeholder="Enter full name" required>
+          <input type="text" class="form-control" formControlName="fullName" id="fullName" placeholder="Enter full name"
+            required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="deathForm.get('fullName')?.hasError('pattern') && deathForm.get('fullName')?.touched">
+          only letters and spaces are allowed
         </div>
 
         <!-- Gender -->
         <div class="mb-3">
           <label for="gender" class="form-label">Gender</label>
-          <select class="form-select" id="gender" required>
+          <select class="form-select" formControlName="gender" id="gender" required>
             <option selected>Choose gender...</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
         </div>
+        <div class="spanMsg" *ngIf="deathForm.get('gender')?.hasError('required') && deathForm.get('gender')?.touched">
+          only gender is allowed
+        </div>
 
         <!-- Date of Death -->
         <div class="mb-3">
           <label for="dateOfDeath" class="form-label">Date of Death</label>
-          <input type="date" class="form-control" id="dateOfDeath" placeholder="Enter date of birth" required>
+          <input type="date" class="form-control" formControlName="dateOfDeath" id="dateOfDeath"
+            placeholder="Enter date of birth" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="deathForm.get('dateOfDeath')?.hasError('required') && deathForm.get('dateOfDeath')?.touched">
+          only date is allowed
         </div>
 
         <!-- Age of Death -->
         <div class="mb-3">
           <label for="ageOfDeath" class="form-label">Age of Death</label>
-          <input type="number" class="form-control" id="ageOfDeath" placeholder="Enter age of death" required>
+          <input type="number" class="form-control" formControlName="ageOfDeath" id="ageOfDeath"
+            placeholder="Enter age of death" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="deathForm.get('ageOfDeath')?.hasError('required') && deathForm.get('ageOfDeath')?.touched">
+          only date is allowed
         </div>
 
         <!-- Father's Name -->
         <div class="mb-3">
           <label for="fatherName" class="form-label">Father's Name</label>
-          <input type="text" class="form-control" id="fatherName" placeholder="Enter father's name" required>
+          <input type="text" class="form-control" formControlName="fatherName" id="fatherName"
+            placeholder="Enter father's name" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="deathForm.get('fatherName')?.hasError('pattern') && deathForm.get('fatherName')?.touched">
+          only letters and spaces are allowed
         </div>
 
         <!-- Mother's Name -->
         <div class="mb-3">
           <label for="motherName" class="form-label">Mother's Name</label>
-          <input type="text" class="form-control" id="motherName" placeholder="Enter mother's name" required>
+          <input type="text" class="form-control" formControlName="motherName" id="motherName"
+            placeholder="Enter mother's name" required>
         </div>
-
-        <!-- Village -->
-        <div class="mb-3">
-          <label for="village" class="form-label">Village</label>
-          <input type="text" class="form-control" id="village" placeholder="Enter village name" required>
-        </div>
-
-        <!-- Mandal -->
-        <div class="mb-3">
-          <label for="mandal" class="form-label">Mandal</label>
-          <input type="text" class="form-control" id="mandal" placeholder="Enter mandal name" required>
-        </div>
-
-        <!-- District -->
-        <div class="mb-3">
-          <label for="district" class="form-label">District</label>
-          <input type="text" class="form-control" id="district" placeholder="Enter district name" required>
-        </div>
-
-        <!-- State -->
-        <div class="mb-3">
-          <label for="state" class="form-label">State</label>
-          <input type="text" class="form-control" id="state" placeholder="Enter state name" required>
+        <div class="spanMsg"
+          *ngIf="deathForm.get('motherName')?.hasError('pattern') && deathForm.get('motherName')?.touched">
+          only letters and spaces are allowed
         </div>
 
         <!-- Country -->
         <div class="mb-3">
           <label for="country" class="form-label">Country</label>
-          <input type="text" class="form-control" id="country" placeholder="Enter country name" required>
+          <select class="form-select" formControlName="country" id="country" aria-placeholder="Choose your country"
+            required>
+            <option value="">Select country</option>
+            <option value="india">India</option>
+          </select>
+        </div>
+        <div class="spanMsg"
+          *ngIf="deathForm.get('country')?.hasError('required') && deathForm.get('country')?.touched">
+          country is required
+        </div>
+
+        <!-- State -->
+        <div class="mb-3">
+          <label for="state" class="form-label">State</label>
+          <select class="form-select" formControlName="state" id="state" aria-placeholder="Choose your state" required>
+            <option value="">Select state</option>
+            <option value="Andhar Pradesh">Andhar Pradesh</option>
+            <option value="Telangana">Telangana</option>
+          </select>
+        </div>
+        <div class="spanMsg" *ngIf="deathForm.get('state')?.hasError('required') && deathForm.get('state')?.touched">
+          state is required
+        </div>
+
+        <!-- District -->
+        <div class="mb-3">
+          <label for="district" class="form-label">District</label>
+          <select class="form-select" formControlName="district" id="district" aria-placeholder="Choose your district"
+            required>
+            <option value="">Select district</option>
+            <option value="Nellore">Nellore</option>
+            <option value="Ananthapuram">Ananthapuram</option>
+          </select>
+        </div>
+        <div class="spanMsg"
+          *ngIf="deathForm.get('district')?.hasError('required') && deathForm.get('district')?.touched">
+          district is required
+        </div>
+
+        <!-- Mandal -->
+        <div class="mb-3">
+          <label for="mandal" class="form-label">Mandal</label>
+          <select class="form-select" formControlName="mandal" id="mandal" aria-placeholder="Choose your mandal"
+            required>
+            <option value="">Select mandal</option>
+            <option value="Muthukur">Muthukur</option>
+            <option value="Roddam">Roddam</option>
+          </select>
+        </div>
+        <div class="spanMsg" *ngIf="deathForm.get('mandal')?.hasError('required') && deathForm.get('mandal')?.touched">
+          mandal is required
+        </div>
+
+        <!-- Village -->
+        <div class="mb-3">
+          <label for="village" class="form-label">Village</label>
+          <select class="form-select" formControlName="village" id="village" aria-placeholder="Choose your village"
+            required>
+            <option value="">Select village</option>
+            <option value="Krishnapatnam">Krishnapatnam</option>
+            <option value="Kanchisamudram">Kanchisamudram</option>
+          </select>
+        </div>
+        <div class="spanMsg"
+          *ngIf="deathForm.get('village')?.hasError('required') && deathForm.get('village')?.touched">
+          village is required
         </div>
 
         <!-- Cause of Death -->
         <div class="mb-3">
           <label for="causeOfDeath" class="form-label">Cause of Death</label>
-          <input type="text" class="form-control" id="causeOfDeath" placeholder="Enter cause of death" required>
+          <input type="text" class="form-control" formControlName="causeOfDeath" id="causeOfDeath"
+            placeholder="Enter cause of death" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="deathForm.get('causeOfDeath')?.hasError('pattern') && deathForm.get('causeOfDeath')?.touched">
+          only letters and spaces are allowed
         </div>
 
         <!-- Buttons -->
@@ -92,4 +178,3 @@
       </form>
     </div>
   </div>
-</div>

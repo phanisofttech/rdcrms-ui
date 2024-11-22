@@ -12,12 +12,23 @@
 }
 
 .custom-table th {
-    font-style: italic;
+    font-style: normal;
     font-size: large;
 }
 
 /* Optional styling for header */
 .custom-table th {
-    background-color: #f2f2f2;
-    text-align: left;
+    background-color:blue;
+    text-align: center;
+    color: white;
+}
+.users-tbl{
+    text-align: center;
+}
+.custom-table tr {
+    background-color: white;
+    text-align: center;
+}
+.custom-table tr td {
+    text-align: center;
 }
