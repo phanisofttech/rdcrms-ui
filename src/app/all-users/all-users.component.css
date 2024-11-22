@@ -18,7 +18,7 @@
 
 /* Optional styling for header */
 .custom-table th {
-    background-color:blue;
+    background-color:rgb(11, 107, 185);
     text-align: center;
     color: white;
 }
