@@ -21,7 +21,7 @@ export class HomeComponent {
     private messageService: MessageService
   ) { }
 
-  onValidateLogin() {
+  onValidateLogin() { 
     this.showSpinner = true;
     this.homeService.getLogin(this.aadhaarNumber, this.password).subscribe(
       response => {

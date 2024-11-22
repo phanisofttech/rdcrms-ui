@@ -10,7 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ButtonModule } from 'primeng/button';
 import { ReportsComponent } from './reports/reports.component';
 import { UserRegisterationComponent } from './registration/user-registeration/user-registeration.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
@@ -50,7 +50,8 @@ import { DeathComponent } from './death/death.component';
     BrowserAnimationsModule,
     ProgressSpinnerModule,
     ChartModule,
-    TableModule
+    TableModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(),
