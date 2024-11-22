@@ -1,100 +1,177 @@
 <div class="container">
-    <div id="cardStyles" class="card">
-        <div class="card-header">
-            <h4>Income Certificate Application Form</h4>
-        </div>
-        <div class="card-body">
-            <form>
-                <div class="mb-3">
-                    <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="fullName" placeholder="Enter full name" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="aadhaarNumber" class="form-label">Aadhaar Card Number</label>
-                    <input type="number" class="form-control" id="aadhaarNumber" placeholder="Enter aadhaar number"
-                        required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="gender" class="form-label">Gender</label>
-                    <select class="form-select" id="gender" aria-placeholder="Choose your gender" required>
-                        <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label for="dob" class="form-label">Date of Birth</label>
-                    <input type="date" class="form-control" id="dob" placeholder="Enter your date of birth" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="fatherName" class="form-label">Father's Name</label>
-                    <input type="text" class="form-control" id="fatherName" placeholder="Enter your father name"
-                        required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="village" class="form-label">Village</label>
-                    <input type="text" class="form-control" id="village" placeholder="Enter village name" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="mandal" class="form-label">Mandal</label>
-                    <input type="text" class="form-control" id="mandal" placeholder="Enter mandal name" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="district" class="form-label">District</label>
-                    <input type="text" class="form-control" id="district" placeholder="Enter district name" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="state" class="form-label">State</label>
-                    <input type="text" class="form-control" id="state" placeholder="Enter state name" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="country" class="form-label">Country</label>
-                    <input type="text" class="form-control" id="country" placeholder="Enter country name" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="mobileNumber" class="form-label">Mobile Number</label>
-                    <input type="number" class="form-control" id="mobileNumber" placeholder="Enter mobile number"
-                        required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="rationCardNumber" class="form-label">Ration Card Number</label>
-                    <input type="number" class="form-control" id="rationCardNumber"
-                        placeholder="Enter ration card number" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="yearlyIncome" class="form-label">Yearly Income</label>
-                    <input type="number" class="form-control" id="yearlyIncome" placeholder="Enter yearly income"
-                        required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="typeOfHouse" class="form-label">Type of House</label>
-                    <input type="text" class="form-control" id="typeOfHouse" placeholder="Enter type of house" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="caste" class="form-label">Caste</label>
-                    <input type="text" class="form-control" id="caste" placeholder="Enter your  caste" required>
-                </div>
-
-                <div class="d-flex justify-content-between">
-                    <button type="reset" class="btn btn-danger">Clear</button>
-                    <button type="button" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-        </div>
+  <p-toast />
+  <div *ngIf="isFormSubmit" class="container mt-5">
+    <!-- Success Alert -->
+    <div class="alert alert-success text-center" role="alert">
+      <h3>Your income Form has been successfully submitted!</h3>
+      <h6>thank you</h6>
     </div>
+  </div>
+  <div *ngIf="showSpinner" class="flex justify-content-center mt-5">
+    <p-progressSpinner strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s" />
+  </div>
+  <div *ngIf="isRequestSent" id="cardStyles" class="card">
+    <div class="card-header">
+      <h4>Income Certificate Application Form</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="incomeForm" (ngSubmit)="saveIncomeFormInfo()">
+        <div class="mb-3">
+          <label for="fullName" class="form-label">Full Name*</label>
+          <input type="text" class="form-control" formControlName="fullName" id="fullName" placeholder="Enter full name"
+            required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="incomeForm.get('fullName')?.hasError('pattern') && incomeForm.get('fullName')?.touched">
+          Only letters and spaces are allowed.
+        </div>
+        <div class="mb-3">
+          <label for="aadhaarNumber" class="form-label">Aadhaar Card Number*</label>
+          <input type="number" class="form-control" formControlName="aadhaarCardNumber" id="aadhaarNumber"
+            placeholder="Enter aadhaar number" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="incomeForm.get('aadhaarCardNumber')?.hasError('pattern') && incomeForm.get('aadhaarCardNumber')?.touched">
+          Aadhaar number must be exactly 12 digits.
+        </div>
+        <div class="mb-3">
+          <label for="gender" class="form-label">Gender*</label>
+          <select class="form-select" formControlName="gender" id="gender" aria-placeholder="Choose your gender"
+            required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="spanMsg"
+          *ngIf="incomeForm.get('gender')?.hasError('required') && incomeForm.get('gender')?.touched">
+          Gender is required.
+        </div>
+        <div class="mb-3">
+          <label for="dob" class="form-label">Date of Birth*</label>
+          <input type="date" class="form-control" formControlName="dateOfBirth" id="dob"
+            placeholder="Enter your date of birth" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="incomeForm.get('dateOfBirth')?.hasError('required') && incomeForm.get('dateOfBirth')?.touched">
+          Date of Birth is required.
+        </div>
+        <div class="mb-3">
+          <label for="fatherName" class="form-label">Father's Name*</label>
+          <input type="text" class="form-control" formControlName="fatherName" id="fatherName"
+            placeholder="Enter your father name" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="incomeForm.get('fatherName')?.hasError('pattern') && incomeForm.get('fatherName')?.touched">
+          Only letters and spaces are allowed.
+        </div>
+        <div class="mb-3">
+          <label for="country" class="form-label">Country*</label>
+          <select id="country" class="form-select" formControlName="country" (change)="onCountryChange($event)">
+            <option value="">Select Country</option>
+            <option *ngFor="let country of countries" [value]="country.countryName">{{ country.countryName }}</option>
+          </select>
+        </div>
+        <div class="spanMsg"
+          *ngIf="incomeForm.get('country')?.hasError('required') && incomeForm.get('country')?.touched">
+          country is required.
+        </div>
+        <div class="mb-3">
+          <label for="state" class="form-label">State*</label>
+          <select id="state" class="form-select" formControlName="state" (change)="onStateChange($event)">
+            <option value="">Select state</option>
+            <option *ngFor="let state of states" [value]="state.stateName">{{ state.stateName }}</option>
+          </select>
+        </div>
+        <div class="spanMsg" *ngIf="incomeForm.get('state')?.hasError('required') && incomeForm.get('state')?.touched">
+          state is required.
+        </div>
+        <div class="mb-3">
+          <label for="district" class="form-label">District*</label>
+          <select id="district" class="form-select" formControlName="district" (change)="onDistrictChange($event)">
+            <option value="">Select state</option>
+            <option *ngFor="let district of districts" [value]="district.districtName">{{ district.districtName }}</option>
+          </select>
+        </div>
+        <div class="spanMsg"
+          *ngIf="incomeForm.get('district')?.hasError('required') && incomeForm.get('district')?.touched">
+          district is required.
+        </div>
+        <div class="mb-3">
+          <label for="mandal" class="form-label">Mandal*</label>
+          <select id="mandal" class="form-select" formControlName="mandal" (change)="onMandalChange($event)">
+            <option value="">Select mandal</option>
+            <option *ngFor="let mandal of mandals" [value]="mandal.mandalName">{{ mandal.mandalName }}</option>
+          </select>
+        </div>
+        <div class="spanMsg" *ngIf="incomeForm.get('mandal')?.hasError('required') && incomeForm.get('mandal')?.touched">
+          mandal is required.
+        </div>
+        <div class="mb-3">
+          <label for="village" class="form-label">Village*</label>
+          <select id="village" class="form-select" formControlName="village">
+            <option value="">Select village</option>
+            <option *ngFor="let village of villages" [value]="village.villageName">{{ village.villageName }}</option>
+          </select>
+        </div>
+        <div class="spanMsg"
+          *ngIf="incomeForm.get('village')?.hasError('required') && incomeForm.get('village')?.touched">
+          village is required.
+        </div>
+        <div class="mb-3">
+          <label for="mobileNumber" class="form-label">Mobile Number*</label>
+          <input type="number" class="form-control" formControlName="mobileNumber" id="mobileNumber"
+            placeholder="Enter mobile number" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="incomeForm.get('mobileNumber')?.hasError('pattern') && incomeForm.get('mobileNumber')?.touched">
+          Mobile Number must be exactly 10 digits.
+        </div>
+
+        <div class="mb-3">
+          <label for="rationCardNumber" class="form-label">Ration Card Number*</label>
+          <input type="number" class="form-control" formControlName="rationCardNumber" id="rationCardNumber"
+            placeholder="Enter ration card number" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="incomeForm.get('rationCardNumber')?.hasError('pattern') && incomeForm.get('rationCardNumber')?.touched">
+          Ration Card Number is required.
+        </div>
+        <div class="mb-3">
+          <label for="yearlyIncome" class="form-label">Yearly Income*</label>
+          <input type="number" class="form-control" formControlName="yearlyIncome" id="yearlyIncome"
+            placeholder="Enter yearly income" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="incomeForm.get('yearlyIncome')?.hasError('required') && incomeForm.get('yearlyIncome')?.touched">
+          Yearly Income is required.
+        </div>
+
+        <div class="mb-3">
+          <label for="typeOfHouse" class="form-label">Type of House*</label>
+          <input type="text" class="form-control" formControlName="typeOfHouse" id="typeOfHouse"
+            placeholder="Enter type of house" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="incomeForm.get('typeOfHouse')?.hasError('pattern') && incomeForm.get('typeOfHouse')?.touched">
+          Only letters and spaces are allowed.
+        </div>
+
+        <div class="mb-3">
+          <label for="caste" class="form-label">Caste*</label>
+          <input type="text" class="form-control" formControlName="caste" id="caste" placeholder="Enter your  caste"
+            required>
+        </div>
+        <div class="spanMsg" *ngIf="incomeForm.get('caste')?.hasError('required') && incomeForm.get('caste')?.touched">
+          caste is required.
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button type="reset" class="btn btn-danger">Clear</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
