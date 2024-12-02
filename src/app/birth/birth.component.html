@@ -1,58 +1,129 @@
 <div class="container">
-  <div class="card" id="cardsStyle">
+  <p-toast />
+  <div *ngIf="isFormSubmit" class="container mt-5">
+    <!-- Success Alert -->
+    <div class="alert alert-success text-center" role="alert">
+      <h3>Your Birth Form has been successfully submitted!</h3>
+      <h6>thank you</h6>
+    </div>
+  </div>
+  <div *ngIf="showSpinner" class="flex justify-content-center mt-5">
+    <p-progressSpinner strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s" />
+  </div>
+  <div class="card" *ngIf="isRequestSent" id="cardsStyle">
     <div class="card-header">
       Birth Certificate Application Form
     </div>
     <div class="card-body">
-      <form>
+      <form [formGroup]="birthForm" (ngSubmit)="saveBirthFormInfo()">
         <div class="mb-3">
           <label for="fullName" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="fullName" placeholder="Enter full name" required>
+          <input type="text" class="form-control" formControlName="fullName" id="fullName" placeholder="Enter full name"
+            required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="birthForm.get('fullName')?.hasError('pattern') && birthForm.get('fullName')?.touched">
+          Only letters and spaces are allowed.
         </div>
         <div class="mb-3">
           <label for="aadhaarNumber" class="form-label">Aadhaar Card Number</label>
-          <input type="number" class="form-control" id="aadhaarNumber" placeholder="Enter Aadhaar Card Number">
+          <input type="number" class="form-control" formControlName="aadhaarCardNumber" id="aadhaarNumber"
+            placeholder="Enter Aadhaar Card Number">
+        </div>
+        <div class="spanMsg"
+          *ngIf="birthForm.get('aadhaarCardNumber')?.hasError('pattern') && birthForm.get('aadhaarCardNumber')?.touched">
+          Aadhaar number must be exactly 12 digits.
         </div>
         <div class="mb-3">
           <label for="gender" class="form-label">Gender</label>
-          <select class="form-control" id="gender" required>
+          <select class="form-control" formControlName="gender" id="gender" required>
             <option value="">Select Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select>
         </div>
+        <div class="spanMsg" *ngIf="birthForm.get('gender')?.hasError('required') && birthForm.get('gender')?.touched">
+          Gender is required.
+        </div>
         <div class="mb-3">
           <label for="dob" class="form-label">Date of Birth</label>
-          <input type="date" class="form-control" id="dob" required>
+          <input type="date" class="form-control" formControlName="dateOfBirth" id="dob" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="birthForm.get('dateOfBirth')?.hasError('required') && birthForm.get('dateOfBirth')?.touched">
+          Date of Birth is required.
         </div>
         <div class="mb-3">
           <label for="fatherName" class="form-label">Father's Name</label>
-          <input type="text" class="form-control" id="fatherName" placeholder="Enter father's name" required>
+          <input type="text" class="form-control" formControlName="fatherName" id="fatherName"
+            placeholder="Enter father's name" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="birthForm.get('fatherName')?.hasError('pattern') && birthForm.get('fatherName')?.touched">
+          Only letters and spaces are allowed.
         </div>
         <div class="mb-3">
           <label for="motherName" class="form-label">Mother's Name</label>
-          <input type="text" class="form-control" id="motherName" placeholder="Enter mother's name" required>
+          <input type="text" class="form-control" formControlName="motherName" id="motherName"
+            placeholder="Enter mother's name" required>
+        </div>
+        <div class="spanMsg"
+          *ngIf="birthForm.get('motherName')?.hasError('pattern') && birthForm.get('motherName')?.touched">
+          Only letters and spaces are allowed.
         </div>
         <div class="mb-3">
-          <label for="village" class="form-label">Village</label>
-          <input type="text" class="form-control" id="village" placeholder="Enter the village" required>
+          <label for="country" class="form-label">Country*</label>
+          <select id="country" class="form-select" formControlName="country" (change)="onCountryChange($event)">
+            <option value="">Select Country</option>
+            <option *ngFor="let country of countries" [value]="country.countryName">{{ country.countryName }}</option>
+          </select>
+        </div>
+        <div class="spanMsg"
+          *ngIf="birthForm.get('country')?.hasError('required') && birthForm.get('country')?.touched">
+          country is required.
         </div>
         <div class="mb-3">
-          <label for="mandal" class="form-label">Mandal</label>
-          <input type="text" class="form-control" id="mandal" placeholder="Enter the mandal" required>
+          <label for="state" class="form-label">State*</label>
+          <select id="state" class="form-select" formControlName="state" (change)="onStateChange($event)">
+            <option value="">Select state</option>
+            <option *ngFor="let state of states" [value]="state.stateName">{{ state.stateName }}</option>
+          </select>
+        </div>
+        <div class="spanMsg" *ngIf="birthForm.get('state')?.hasError('required') && birthForm.get('state')?.touched">
+          state is required.
         </div>
         <div class="mb-3">
-          <label for="district" class="form-label">District</label>
-          <input type="text" class="form-control" id="district" placeholder="Enter the district" required>
+          <label for="district" class="form-label">District*</label>
+          <select id="district" class="form-select" formControlName="district" (change)="onDistrictChange($event)">
+            <option value="">Select state</option>
+            <option *ngFor="let district of districts" [value]="district.districtName">{{ district.districtName }}</option>
+          </select>
+        </div>
+        <div class="spanMsg"
+          *ngIf="birthForm.get('district')?.hasError('required') && birthForm.get('district')?.touched">
+          district is required.
         </div>
         <div class="mb-3">
-          <label for="state" class="form-label">State</label>
-          <input type="text" class="form-control" id="state" placeholder="Enter the state" required>
+          <label for="mandal" class="form-label">Mandal*</label>
+          <select id="mandal" class="form-select" formControlName="mandal" (change)="onMandalChange($event)">
+            <option value="">Select mandal</option>
+            <option *ngFor="let mandal of mandals" [value]="mandal.mandalName">{{ mandal.mandalName }}</option>
+          </select>
+        </div>
+        <div class="spanMsg" *ngIf="birthForm.get('mandal')?.hasError('required') && birthForm.get('mandal')?.touched">
+          mandal is required.
         </div>
         <div class="mb-3">
-          <label for="country" class="form-label">Country</label>
-          <input type="text" class="form-control" id="country" placeholder="Enter the country" required>
+          <label for="village" class="form-label">Village*</label>
+          <select id="village" class="form-select" formControlName="village">
+            <option value="">Select village</option>
+            <option *ngFor="let village of villages" [value]="village.villageName">{{ village.villageName }}</option>
+          </select>
+        </div>
+        <div class="spanMsg"
+          *ngIf="birthForm.get('village')?.hasError('required') && birthForm.get('village')?.touched">
+          village is required.
         </div>
         <div class="d-flex justify-content-between">
           <button type="reset" class="btn btn-danger">Clear</button>

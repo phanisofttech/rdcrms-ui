@@ -89,73 +89,57 @@
 
         <!-- Country -->
         <div class="mb-3">
-          <label for="country" class="form-label">Country</label>
-          <select class="form-select" formControlName="country" id="country" aria-placeholder="Choose your country"
-            required>
-            <option value="">Select country</option>
-            <option value="india">India</option>
+          <label for="country" class="form-label">Country*</label>
+          <select id="country" class="form-select" formControlName="country" (change)="onCountryChange($event)">
+            <option value="">Select Country</option>
+            <option *ngFor="let country of countries" [value]="country.countryName">{{ country.countryName }}</option>
           </select>
         </div>
         <div class="spanMsg"
           *ngIf="deathForm.get('country')?.hasError('required') && deathForm.get('country')?.touched">
-          country is required
+          country is required.
         </div>
-
-        <!-- State -->
         <div class="mb-3">
-          <label for="state" class="form-label">State</label>
-          <select class="form-select" formControlName="state" id="state" aria-placeholder="Choose your state" required>
+          <label for="state" class="form-label">State*</label>
+          <select id="state" class="form-select" formControlName="state" (change)="onStateChange($event)">
             <option value="">Select state</option>
-            <option value="Andhar Pradesh">Andhar Pradesh</option>
-            <option value="Telangana">Telangana</option>
+            <option *ngFor="let state of states" [value]="state.stateName">{{ state.stateName }}</option>
           </select>
         </div>
         <div class="spanMsg" *ngIf="deathForm.get('state')?.hasError('required') && deathForm.get('state')?.touched">
-          state is required
+          state is required.
         </div>
-
-        <!-- District -->
         <div class="mb-3">
-          <label for="district" class="form-label">District</label>
-          <select class="form-select" formControlName="district" id="district" aria-placeholder="Choose your district"
-            required>
-            <option value="">Select district</option>
-            <option value="Nellore">Nellore</option>
-            <option value="Ananthapuram">Ananthapuram</option>
+          <label for="district" class="form-label">District*</label>
+          <select id="district" class="form-select" formControlName="district" (change)="onDistrictChange($event)">
+            <option value="">Select state</option>
+            <option *ngFor="let district of districts" [value]="district.districtName">{{ district.districtName }}</option>
           </select>
         </div>
         <div class="spanMsg"
           *ngIf="deathForm.get('district')?.hasError('required') && deathForm.get('district')?.touched">
-          district is required
+          district is required.
         </div>
-
-        <!-- Mandal -->
         <div class="mb-3">
-          <label for="mandal" class="form-label">Mandal</label>
-          <select class="form-select" formControlName="mandal" id="mandal" aria-placeholder="Choose your mandal"
-            required>
+          <label for="mandal" class="form-label">Mandal*</label>
+          <select id="mandal" class="form-select" formControlName="mandal" (change)="onMandalChange($event)">
             <option value="">Select mandal</option>
-            <option value="Muthukur">Muthukur</option>
-            <option value="Roddam">Roddam</option>
+            <option *ngFor="let mandal of mandals" [value]="mandal.mandalName">{{ mandal.mandalName }}</option>
           </select>
         </div>
         <div class="spanMsg" *ngIf="deathForm.get('mandal')?.hasError('required') && deathForm.get('mandal')?.touched">
-          mandal is required
+          mandal is required.
         </div>
-
-        <!-- Village -->
         <div class="mb-3">
-          <label for="village" class="form-label">Village</label>
-          <select class="form-select" formControlName="village" id="village" aria-placeholder="Choose your village"
-            required>
+          <label for="village" class="form-label">Village*</label>
+          <select id="village" class="form-select" formControlName="village">
             <option value="">Select village</option>
-            <option value="Krishnapatnam">Krishnapatnam</option>
-            <option value="Kanchisamudram">Kanchisamudram</option>
+            <option *ngFor="let village of villages" [value]="village.villageName">{{ village.villageName }}</option>
           </select>
         </div>
         <div class="spanMsg"
           *ngIf="deathForm.get('village')?.hasError('required') && deathForm.get('village')?.touched">
-          village is required
+          village is required.
         </div>
 
         <!-- Cause of Death -->
