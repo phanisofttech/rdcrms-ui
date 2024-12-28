@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartModule } from 'primeng/chart';
+import { CertificateCountService } from './service/certificate-count.service';
+import { CertificateCount } from '../model/certificate-count';
 
 @Component({
   selector: 'app-reports',
@@ -12,8 +14,21 @@ export class ReportsComponent implements OnInit {
     basicOptions: any;
     data: any;
     options: any;
+    certificateCounts: CertificateCount[] = [] ;
+
+
+    constructor(private certificateCountService : CertificateCountService){}
+
+    getCertificatesDetails(){
+       this.certificateCountService.getCertificateCounts().subscribe(
+        (response : CertificateCount[])=> {
+           this.certificateCounts = response;
+        }
+       )
+    }
 
     ngOnInit() {
+      this.getCertificatesDetails();
       const documentStyle = getComputedStyle(document.documentElement);
       const textColor = documentStyle.getPropertyValue('--text-color');
       const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
@@ -62,30 +77,6 @@ export class ReportsComponent implements OnInit {
               }
           }
       };
-
-    this.data = {
-      labels: ['Caste', 'Income','Birth', 'Death'],
-      datasets: [
-          {
-            label: 'No of Certificates',
-            data: [540, 325, 702, 620],
-              backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
-              hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-300'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
-          }
-      ]
-  };
-
-
-  this.options = {
-      cutout: '60%',
-      plugins: {
-          legend: {
-              labels: {
-                  color: textColor
-              }
-          }
-      }
-  };
 
   }
 

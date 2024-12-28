@@ -1,3 +1,16 @@
-#piechart {
-    height: 10px;
+
+#report-table{
+    border-radius: 10px; 
+    overflow: hidden; 
+    border: 1px solid black;
+}
+#headers{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: black;
+}
+#values{
+    font-family: monospace;
+    font-style: italic;
+    background-color:cyan;
 }
