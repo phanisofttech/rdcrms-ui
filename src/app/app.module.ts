@@ -24,6 +24,7 @@ import { IncomeComponent } from './income/income.component';
 import { BirthComponent } from './birth/birth.component';
 import { DeathComponent } from './death/death.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

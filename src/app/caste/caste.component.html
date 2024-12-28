@@ -1,95 +1,174 @@
 <div class="container mt-5">
-    <div id="cardsStyle" class="row d-flex justify-content-center">
+    <p-toast />
+    <div *ngIf="isFormSubmit" class="container mt-5">
+        <!-- Success Alert -->
+        <div class="alert alert-success text-center" role="alert">
+            <h3>Your caste Form has been successfully submitted!</h3>
+            <h6>thank you</h6>
+        </div>
+    </div>
+    <div *ngIf="showSpinner" class="flex justify-content-center mt-5">
+        <p-progressSpinner strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s" />
+    </div>
+    <div *ngIf="isRequestSent" id="cardsStyle" class="row d-flex justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="card">
                 <div class="card-header text-center">
                     Caste Certificate Application Form
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form [formGroup]="casteForm" (ngSubmit)="saveCasteFormInfo()">
                         <div class="mb-3">
-                            <label for="fullName" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="fullName" name="FULL_NAME"
-                                placeholder="Enter full name" required>
+                            <label for="fullName" class="form-label">Full Name*</label>
+                            <input type="text" class="form-control" formControlName="fullName" id="fullName"
+                                name="FULL_NAME" placeholder="Enter full name" required>
+                            <div class="spanMsg"
+                                *ngIf="casteForm.get('fullName')?.hasError('pattern') && casteForm.get('fullName')?.touched">
+                                Only letters and spaces are allowed.
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="aadhaarCardNumber" class="form-label">Aadhaar Card Number</label>
-                            <input type="number" class="form-control" id="aadhaarCardNumber" name="AADHAAR_CARD_NUMBER"
+                            <label for="aadhaarCardNumber" class="form-label">Aadhaar Card Number*</label>
+                            <input type="number" class="form-control" formControlName="aadhaarCardNumber"
+                                id="aadhaarCardNumber" name="AADHAAR_CARD_NUMBER"
                                 placeholder="Enter aadhaar card number" required>
+                            <div class="spanMsg"
+                                *ngIf="casteForm.get('aadhaarCardNumber')?.hasError('pattern') && casteForm.get('aadhaarCardNumber')?.touched">
+                                Aadhaar number must be exactly 12 digits.
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="gender" class="form-label">Gender</label>
-                            <select class="form-select" id="gender" name="GENDER" aria-placeholder="Choose your gendr"
-                                required>
+                            <label for="gender" class="form-label">Gender*</label>
+                            <select class="form-select" id="gender" formControlName="gender" name="GENDER"
+                                aria-placeholder="Choose your gendr" required>
                                 <option value="" disabled selected>Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Other">Other</option>
                             </select>
                         </div>
-                        <div class="mb-3">
-                            <label for="dob" class="form-label">Date of Birth</label>
-                            <input type="date" class="form-control" id="dob" name="DATE_OF_BIRTH"
-                                placeholder="Enter date of birth" required>
+                        <div class="spanMsg"
+                            *ngIf="casteForm.get('gender')?.hasError('required') && casteForm.get('gender')?.touched">
+                            Gender is required.
                         </div>
                         <div class="mb-3">
-                            <label for="fatherName" class="form-label">Father's Name</label>
-                            <input type="text" class="form-control" id="fatherName" name="FATHER_NAME"
-                                placeholder="Enter father name" required>
+                            <label for="dob" class="form-label">Date of Birth*</label>
+                            <input type="date" class="form-control" formControlName="dateOfBirth" id="dob"
+                                name="DATE_OF_BIRTH" placeholder="Enter date of birth" required>
+                        </div>
+                        <div class="spanMsg"
+                            *ngIf="casteForm.get('dateOfBirth')?.hasError('required') && casteForm.get('dateOfBirth')?.touched">
+                            Date of Birth is required.
                         </div>
                         <div class="mb-3">
-                            <label for="caste" class="form-label">Caste</label>
-                            <input type="text" class="form-control" id="caste" name="CASTE"
+                            <label for="fatherName" class="form-label">Father's Name*</label>
+                            <input type="text" class="form-control" formControlName="fatherName" id="fatherName"
+                                name="FATHER_NAME" placeholder="Enter father name" required>
+                        </div>
+                        <div class="spanMsg"
+                            *ngIf="casteForm.get('fatherName')?.hasError('pattern') && casteForm.get('fatherName')?.touched">
+                            Only letters and spaces are allowed.
+                        </div>
+                        <div class="mb-3">
+                            <label for="caste" class="form-label">Caste*</label>
+                            <input type="text" class="form-control" formControlName="caste" id="caste" name="CASTE"
                                 placeholder="Enter your caste" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="subCaste" class="form-label">Sub-Caste</label>
-                            <input type="text" class="form-control" id="subCaste" name="SUB_CASTE"
-                                placeholder="Enter your sub-caste" required>
+                        <div class="spanMsg"
+                            *ngIf="casteForm.get('caste')?.hasError('required') && casteForm.get('caste')?.touched">
+                            caste is required.
                         </div>
                         <div class="mb-3">
-                            <label for="village" class="form-label">Village</label>
-                            <input type="text" class="form-control" id="village" name="VILLAGE"
-                                placeholder="Enter village name" required>
+                            <label for="subCaste" class="form-label">Sub-Caste*</label>
+                            <input type="text" class="form-control" formControlName="subCaste" id="subCaste"
+                                name="SUB_CASTE" placeholder="Enter your sub-caste" required>
+                        </div>
+                        <div class="spanMsg"
+                            *ngIf="casteForm.get('subCaste')?.hasError('required') && casteForm.get('subCaste')?.touched">
+                            Sub-caste is required.
                         </div>
                         <div class="mb-3">
-                            <label for="mandal" class="form-label">Mandal</label>
-                            <input type="text" class="form-control" id="mandal" name="MANDAL"
-                                placeholder="Enter mandal name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="district" class="form-label">District</label>
-                            <input type="text" class="form-control" id="district" name="DISTRICT"
-                                placeholder="Enter district name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="state" class="form-label">State</label>
-                            <input type="text" class="form-control" id="state" name="STATE"
-                                placeholder="Enter your state" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="country" class="form-label">Country</label>
-                            <input type="text" class="form-control" id="country" name="COUNTRY"
-                                placeholder="Enter country name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="purposeOfCertificate" class="form-label">Purpose of Certificate</label>
-                            <input type="text" class="form-control" id="purposeOfCertificate"
-                                name="PURPOSE_OF_CERTIFICATE" placeholder="Enter purpose of certificates" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="physicallyHandicapped" class="form-label">Physically Handicapped</label>
-                            <select class="form-select" id="physicallyHandicapped" name="PHYSICALLY_HANDICAPPED">
-                                <option value="No">No</option>
-                                <option value="Yes">Yes</option>
+                            <label for="country" class="form-label">Country*</label>
+                            <select id="country" class="form-select" formControlName="country" (change)="onCountryChange($event)">
+                              <option value="">Select Country</option>
+                              <option *ngFor="let country of countries" [value]="country.countryName">{{ country.countryName }}</option>
                             </select>
-                        </div>
-                        <!-- Buttons -->
-                        <div class="d-flex justify-content-between">
-                            <button type="reset" class="btn btn-danger">Clear</button>
-                            <button type="button" class="btn btn-primary">Submit</button>
-                        </div>
+                          </div>
+                          <div class="spanMsg"
+                            *ngIf="casteForm.get('country')?.hasError('required') && casteForm.get('country')?.touched">
+                            country is required.
+                          </div>
+                          <div class="mb-3">
+                            <label for="state" class="form-label">State*</label>
+                            <select id="state" class="form-select" formControlName="state" (change)="onStateChange($event)">
+                              <option value="">Select state</option>
+                              <option *ngFor="let state of states" [value]="state.stateName">{{ state.stateName }}</option>
+                            </select>
+                          </div>
+                          <div class="spanMsg" *ngIf="casteForm.get('state')?.hasError('required') && casteForm.get('state')?.touched">
+                            state is required.
+                          </div>
+                          <div class="mb-3">
+                            <label for="district" class="form-label">District*</label>
+                            <select id="district" class="form-select" formControlName="district" (change)="onDistrictChange($event)">
+                              <option value="">Select state</option>
+                              <option *ngFor="let district of districts" [value]="district.districtName">{{ district.districtName }}</option>
+                            </select>
+                          </div>
+                          <div class="spanMsg"
+                            *ngIf="casteForm.get('district')?.hasError('required') && casteForm.get('district')?.touched">
+                            district is required.
+                          </div>
+                          <div class="mb-3">
+                            <label for="mandal" class="form-label">Mandal*</label>
+                            <select id="mandal" class="form-select" formControlName="mandal" (change)="onMandalChange($event)">
+                              <option value="">Select mandal</option>
+                              <option *ngFor="let mandal of mandals" [value]="mandal.mandalName">{{ mandal.mandalName }}</option>
+                            </select>
+                          </div>
+                          <div class="spanMsg" *ngIf="casteForm.get('mandal')?.hasError('required') && casteForm.get('mandal')?.touched">
+                            mandal is required.
+                          </div>
+                          <div class="mb-3">
+                            <label for="village" class="form-label">Village*</label>
+                            <select id="village" class="form-select" formControlName="village">
+                              <option value="">Select village</option>
+                              <option *ngFor="let village of villages" [value]="village.villageName">{{ village.villageName }}</option>
+                            </select>
+                          </div>
+                          <div class="spanMsg"
+                            *ngIf="casteForm.get('village')?.hasError('required') && casteForm.get('village')?.touched">
+                            village is required.
+                          </div>
+                            <div class="mb-3">
+                                <label for="purposeOfCertificate" class="form-label">Purpose of Certificate*</label>
+                                <input type="text" class="form-control" formControlName="purposeOfCertificate"
+                                    id="purposeOfCertificate" name="PURPOSE_OF_CERTIFICATE"
+                                    placeholder="Enter purpose of certificates" required>
+                            </div>
+                            <div class="spanMsg"
+                                *ngIf="casteForm.get('purposeOfCertificate')?.hasError('pattern') && casteForm.get('purposeOfCertificate')?.touched">
+                                Only letters and spaces are allowed.
+                            </div>
+                            <div class="mb-3">
+                                <label for="physicallyHandicapped" class="form-label">Physically Handicapped*</label>
+                                <select class="form-select" formControlName="physicallyHandicapped"
+                                    id="physicallyHandicapped" name="PHYSICALLY_HANDICAPPED">
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                            <div class="spanMsg"
+                                *ngIf="casteForm.get('physicallyHandicapped')?.hasError('required') && casteForm.get('physicallyHandicapped')?.touched">
+                                Required feild.
+                            </div>
+                            <!-- Buttons -->
+                            <div class="d-flex justify-content-between">
+                                <button type="reset" class="btn btn-danger">Clear</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                     </form>
+
                 </div>
             </div>
         </div>

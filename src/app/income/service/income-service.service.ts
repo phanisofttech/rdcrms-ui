@@ -10,16 +10,16 @@ import { Village } from '../../model/village.model';
 @Injectable({
   providedIn: 'root'
 })
-export class DeathServiceService {
+export class IncomeServiceService {
 
   constructor(private http: HttpClient) { }
 
-  deathApi = "http://localhost:5000/api/request/sendCertificateRequest";
+  localApi = "http://localhost:5000/api/request/sendCertificateRequest";
 
   localApiRevenue = "http://localhost:5000/api/revenue/";
 
-  saveDeathFormDetails(deathFormInfo: any) {
-    return this.http.post(this.deathApi, deathFormInfo);
+  saveIncomeDetails(incomeFormInfo: any) {
+    return this.http.post(this.localApi, incomeFormInfo);
   }
 
   getCountries():Observable<Country[]>{

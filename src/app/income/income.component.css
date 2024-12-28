@@ -60,6 +60,10 @@
     /* Lighter grey on hover */
 }
 
+.spanMsg {
+    color: red;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .card {
