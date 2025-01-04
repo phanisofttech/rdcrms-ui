@@ -12,8 +12,8 @@ export class ReportsComponent implements OnInit {
 
     basicData: any;
     basicOptions: any;
-    data: any;
-    options: any;
+    pieData: any;
+    pieOptions: any;
     certificateCounts: CertificateCount[] = [] ;
 
 
@@ -23,61 +23,77 @@ export class ReportsComponent implements OnInit {
        this.certificateCountService.getCertificateCounts().subscribe(
         (response : CertificateCount[])=> {
            this.certificateCounts = response;
+           this.barChart();
+           this.pieChart();
         }
        )
     }
 
     ngOnInit() {
       this.getCertificatesDetails();
-      const documentStyle = getComputedStyle(document.documentElement);
-      const textColor = documentStyle.getPropertyValue('--text-color');
-      const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-      const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+  }
 
-      this.basicData = {
-          labels: ['Cast', 'Income', 'Birth', 'Death'],
-          datasets: [
-              {
-                  label: 'No of Certificates',
-                  data: [540, 325, 702, 620],
-                  backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(153, 102, 255, 0.2)'],
-                  borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
-                  borderWidth: 1
-              }
-          ]
-      };
+  barChart(){
+    const labels = this.certificateCounts.map(item => item.certificateType);
+    const dataValues = this.certificateCounts.map(item => item.totalCount);
 
-      this.basicOptions = {
-          plugins: {
-              legend: {
-                  labels: {
-                      color: textColor
-                  }
-              }
-          },
-          scales: {
-              y: {
-                  beginAtZero: true,
-                  ticks: {
-                      color: textColorSecondary
-                  },
-                  grid: {
-                      color: surfaceBorder,
-                      drawBorder: false
-                  }
-              },
-              x: {
-                  ticks: {
-                      color: textColorSecondary
-                  },
-                  grid: {
-                      color: surfaceBorder,
-                      drawBorder: false
-                  }
-              }
-          }
-      };
+    this.basicData = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Certificate Counts',
+                backgroundColor: '#42A5F5', // Bar color
+                borderColor: '#1E88E5', // Border color
+                data: dataValues // Assign data values
+            }
+        ]
+    };
+    this.basicOptions = {
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top'
+            }
+        },
+        responsive: true,
+        scales: {
+            x: {
+                beginAtZero: true,
+            },
+            y: {
+                beginAtZero: true,
+            }
+        }
+    };
 
+  }
+
+  pieChart(){
+    const labels = this.certificateCounts.map(item => item.certificateType);
+    const dataValues = this.certificateCounts.map(item => item.totalCount);
+
+    this.pieData = {
+        labels: labels, // Labels for the pie slices
+        datasets: [{
+            label: 'Certificate Counts',
+            backgroundColor: [
+                '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+            ], // Colors for each slice
+            data: dataValues // Data values for each slice
+        }]
+    };
+    this.pieOptions = {
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top' // Legend positioning
+            },
+            tooltip: {
+                enabled: true // Display tooltips on hover
+            }
+        },
+        responsive: true // Ensure chart is responsive
+    };
   }
 
 

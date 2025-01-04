@@ -5,12 +5,12 @@
                 <p-table [value]="certificateCounts" [responsiveLayout]="'scroll'" class="p-datatable-striped">
                     <ng-template pTemplate="header">
                       <tr id="headers">
-                        <th>Certificate Type</th>
-                        <th>Total</th>
-                        <th>New</th>
-                        <th>Inprogress</th>
-                        <th>Completed</th>
-                        <th>Rejected</th>
+                        <th>CERTIFICATE TYPE</th>
+                        <th>TOTAL</th>
+                        <th>NEW</th>
+                        <th>INPROGRESS</th>
+                        <th>COMPLETED</th>
+                        <th>REJECTED</th>
                       </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-certificateCount>
@@ -28,14 +28,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <div class="card">
+        <div class="col-8">
+            <div id="" class="card">
                 <p-chart type="bar" [data]="basicData" [options]="basicOptions" />
             </div>
         </div>
-        <div class="col">
+        <div class="col-4">
             <div class="card">
-                <p-chart type="bar" [data]="basicData" [options]="basicOptions" />
+                <p-chart type="pie" [data]="pieData" [options]="pieOptions" />
             </div>
         </div>
     </div>

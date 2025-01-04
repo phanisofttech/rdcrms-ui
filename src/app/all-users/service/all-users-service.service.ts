@@ -10,7 +10,7 @@ export class AllUsersServiceService {
 
   constructor(private http: HttpClient) { }
 
-  userApi = "https://pst-user-service.df.r.appspot.com/api/user/all-users"
+  userApi = "http://localhost:5000/api/user/all-users"
 
   getAllUsers(): Observable<UserResponse[]> {
 
