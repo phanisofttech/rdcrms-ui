@@ -41,7 +41,7 @@ export class CasteComponent {
       state: ['', Validators.required],
       country: ['', Validators.required],
       typeOfDocument: ['Caste'],
-      status: ['new'],
+      status: ['Inprogress'],
       purposeOfCertificate: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       physicallyHandicapped: ['', Validators.required]
     });

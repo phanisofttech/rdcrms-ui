@@ -41,7 +41,7 @@ export class DeathComponent {
       country: ['', Validators.required],
       causeOfDeath: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       typeOfDocument: ['Death'],
-      status: ['new']
+      status: ['Inprogress']
     })
   }
 

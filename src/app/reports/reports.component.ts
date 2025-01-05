@@ -11,9 +11,7 @@ import { CertificateCount } from '../model/certificate-count';
 export class ReportsComponent implements OnInit {
 
     basicData: any;
-    basicOptions: any;
     pieData: any;
-    pieOptions: any;
     certificateCounts: CertificateCount[] = [] ;
 
 
@@ -48,23 +46,6 @@ export class ReportsComponent implements OnInit {
             }
         ]
     };
-    this.basicOptions = {
-        plugins: {
-            legend: {
-                display: true,
-                position: 'top'
-            }
-        },
-        responsive: true,
-        scales: {
-            x: {
-                beginAtZero: true,
-            },
-            y: {
-                beginAtZero: true,
-            }
-        }
-    };
 
   }
 
@@ -81,18 +62,6 @@ export class ReportsComponent implements OnInit {
             ], // Colors for each slice
             data: dataValues // Data values for each slice
         }]
-    };
-    this.pieOptions = {
-        plugins: {
-            legend: {
-                display: true,
-                position: 'top' // Legend positioning
-            },
-            tooltip: {
-                enabled: true // Display tooltips on hover
-            }
-        },
-        responsive: true // Ensure chart is responsive
     };
   }
 

@@ -42,7 +42,7 @@ export class IncomeComponent {
       yearlyIncome: ['', Validators.required],
       typeOfHouse: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       caste: ['', Validators.required],
-      status : ['new']
+      status : ['Inprogress']
     })
   }
 
