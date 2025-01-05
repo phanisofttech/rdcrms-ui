@@ -40,8 +40,8 @@ export class CasteComponent {
       district: ['', Validators.required],
       state: ['', Validators.required],
       country: ['', Validators.required],
-      typeOfDocument: ['caste'],
-      status: ['new'],
+      typeOfDocument: ['Caste'],
+      status: ['Inprogress'],
       purposeOfCertificate: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       physicallyHandicapped: ['', Validators.required]
     });

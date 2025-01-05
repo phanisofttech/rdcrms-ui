@@ -1,3 +1,15 @@
-#piechart {
-    height: 10px;
+
+#report-table{
+    border-radius: 10px; 
+    overflow: hidden; 
+    border: 1px solid black;
+}
+#headers{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: black;
+}
+#values{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color:cyan;
 }

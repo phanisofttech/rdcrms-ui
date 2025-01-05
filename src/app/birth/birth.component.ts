@@ -38,7 +38,7 @@ export class BirthComponent implements OnInit {
       state: ['', Validators.required],
       country: ['', Validators.required],
       typeOfDocument: ['Birth'],
-      status: ['new']
+      status: ['Inprogress']
     })
   }
 
