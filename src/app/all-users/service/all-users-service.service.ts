@@ -9,11 +9,11 @@ import { UserResponse } from '../../model/user-response';
 export class AllUsersServiceService {
 
   constructor(private http: HttpClient) { }
-  #userApi = "https://pst-user-service.df.r.appspot.com/api/user/all-users";
-  localUserApi = "http://localhost:5000/api/user/all-users"
+  //userApi = "https://pst-user-service.df.r.appspot.com/api/user/all-users";
+  userApi = "http://localhost:5000/api/user/all-users"
 
   getAllUsers(): Observable<UserResponse[]> {
 
-    return this.http.get<UserResponse[]>(this.localUserApi);
+    return this.http.get<UserResponse[]>(this.userApi);
   }
 }
