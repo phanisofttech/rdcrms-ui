@@ -10,12 +10,14 @@ import { CasteComponent } from './caste/caste.component';
 import { IncomeComponent } from './income/income.component';
 import { BirthComponent } from './birth/birth.component';
 import { DeathComponent } from './death/death.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 const routes: Routes = [
  { path: "", component: HomeComponent},
  { path: "home", component: HomeComponent},
  { path: "register", component: UserRegisterationComponent},
+ { path: "change-password", component:ChangePasswordComponent},
  { path: "dashboard", component: DashboardComponent, 
  children: [
   { path: "", component: ReportsComponent},

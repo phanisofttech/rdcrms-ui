@@ -19,7 +19,7 @@
                     placeholder="Enter Aadhaar Number" />
                 <label for="password"><b>Password</b></label><br>
                 <input type="text" id="password" name="password" [(ngModel)]="password"  placeholder="Enter Password" />
-                <a href="#">Forgot password?</a>
+                <a routerLink="/change-password">change password?</a>
                 <button  type="button" (click)="onValidateLogin()">Sign in</button>
                 <p class="or">------- or -------</p>
                 <p class="sign">Sign in with Google</p>
