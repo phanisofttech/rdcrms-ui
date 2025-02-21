@@ -1,11 +1,20 @@
 <div class="bg">
+    <div class="image-container">
+        <img src="https://skilling-india.net/wp-content/uploads/2023/08/Government-Schemes.png" alt="Image 1">
+        <img src="https://www.nationalskillsnetwork.in/wp-content/uploads/2016/05/Skill-development-government-schemes-in-India.jpg" alt="Image 2">
+        <img src="https://wpassets.adda247.com/wp-content/uploads/multisite/2022/10/03185001/%E2%80%98myScheme-Platform%E2%80%99-One-stop-Search-and-Discovery-of-Government-Schemes.png" alt="Image 3">
+        <img src="https://ddmtn57ju2md7.cloudfront.net/media/bbifiles/1182092/c9a6b4a9-97fb-47b7-a213-4984f06077ab.jpg" alt="Image 4">
+        <img src="https://images.ctfassets.net/uwf0n1j71a7j/7jAVm151Azq9Cdv5VLfvGf/2557855bd92e9ca7abf0af93c96397c1/14-government-apps-during-lockdown.png" alt="Image 5">
+    </div>
+
     <div class="container">
-        <!-- Left Column -->
+       <!-- Left Column -->
         <div class="left-column">
-            <!-- <img src="assets\images\bgrd.svg" alt="hello" /> -->
+            <img src="https://tse1.mm.bing.net/th?id=OIP.AGealTSJ0A1z2vdJEdfh_wAAAA&pid=Api&P=0&h=180" style="width: 250px; mix-blend-mode: multiply; " />
             <h3><b>RDCRMS</b></h3>
-            <p>Real-Time Monitoring System Dashboard<br>for Revenue Department<br></p>
+           <p>REVENUE DEPARTMENT CERTIFICATES <br>REAL-TIME MONITORING SYSTEM<br></p>
         </div>
+
         <!-- Right Column -->
         <div class="right-column">
             <p-toast />
@@ -19,12 +28,14 @@
                     placeholder="Enter Aadhaar Number" />
                 <label for="password"><b>Password</b></label><br>
                 <input type="text" id="password" name="password" [(ngModel)]="password"  placeholder="Enter Password" />
-                <a routerLink="/change-password">change password?</a>
+                <div class="change-password">
+                    <p><a routerLink="/change-password">Change password?</a></p>
+                </div>
                 <button  type="button" (click)="onValidateLogin()">Sign in</button>
                 <p class="or">------- or -------</p>
                 <p class="sign">Sign in with Google</p>
             </div>
-            <p class="footer">Are you new? <a routerLink="/register">Create an account</a></p>
+            <p class="footer">Are you new?<a routerLink="/register">Create an account</a></p>
         </div>
     </div>
 </div>
