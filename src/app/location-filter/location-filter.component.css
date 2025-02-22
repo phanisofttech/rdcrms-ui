@@ -1,0 +1,67 @@
+form {
+  width: 300px;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+select, button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #0c4eea;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Style for the p-table */
+.custom-table {
+border-collapse: collapse;
+width: 100%;
+}
+
+/* Add border to table header, body cells, and rows */
+.custom-table th,
+.custom-table td {
+border: 2px solid #1d1515;
+padding: 11px;
+}
+
+.custom-table th {
+font-style: normal;
+font-size: large;
+}
+
+/* Optional styling for header */
+.custom-table th {
+background-color:rgb(11, 107, 185);
+text-align: center;
+color: white;
+}
+.users-tbl{
+text-align: center;
+}
+.custom-table tr {
+background-color: white;
+text-align: center;
+}
+.custom-table tr td {
+text-align: center;
+}

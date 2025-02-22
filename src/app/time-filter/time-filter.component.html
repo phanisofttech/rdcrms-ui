@@ -1,0 +1,72 @@
+<div class="container">
+<div class="grid">
+  <div class="col-3">
+    <form (ngSubmit)="onSubmit()">
+      <!-- Year Dropdown -->
+      <label for="year">Year:</label>
+      <select id="year" [(ngModel)]="selectedYear" name="year" (change)="onYearChange()">
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+    
+      <!-- Month Dropdown -->
+      <div *ngIf="months.length > 0">
+        <label for="month">Month:</label>
+        <select id="month" [(ngModel)]="selectedMonth" name="month" (change)="onMonthChange()">
+          <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+        </select>
+      </div>
+    
+      <!-- Date Dropdown -->
+      <div *ngIf="dates.length > 0">
+        <label for="date">Date:</label>
+        <select id="date" [(ngModel)]="selectedDate" name="date">
+          <option *ngFor="let date of dates" [value]="date">{{ date }}</option>
+        </select>
+      </div>
+    
+      <!-- Submit Button -->
+      <button type="submit">Filter</button>
+    </form>
+  </div>
+  
+  <div class="col-9">
+    <div *ngIf="isDataPresent">
+      <p-table [value]="timeReports" responsiveLayout="scroll" class="custom-table">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Month</th>
+                <th>Application Recevied</th>
+                <th>Application Inprogress</th>
+                <th>Application Approved</th>
+                <th>Application Rejected</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-timeReports>
+            <tr>
+                <td>{{timeReports.month}}</td>
+                <td>{{timeReports.applicationsRecevied}}</td>
+                <td>{{timeReports.applicationsInprogress}}</td>
+                <td>{{timeReports.applicationsApproved}}</td>
+                <td>{{timeReports.applicationsRejected}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>
+    <div *ngIf="isNotThereData">
+      <h1>No Data Found</h1>
+    </div>
+  </div>
+</div>
+<div class="grid" *ngIf="isNoInfo">
+  <div class="col-8">
+      <div class="card">
+          <p-chart type="bar" [data]="basicData" />
+      </div>
+  </div>
+  <div class="col-4">
+      <div class="card">
+          <p-chart type="pie" [data]="pieData" />
+      </div>
+  </div>
+</div>
+</div>
