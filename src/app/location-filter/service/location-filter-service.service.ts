@@ -6,7 +6,7 @@ import { District } from '../../model/district.model';
 import { Mandal } from '../../model/mandal.model';
 import { State } from '../../model/state.model';
 import { Village } from '../../model/village.model';
-import { FilterResourceApplicationResponse } from '../../model/FilterResourceApplicationResponse';
+import { FilterResourceApplicationResponse } from '../../model/filter-resource-application-response';
 
 @Injectable({
   providedIn: 'root'

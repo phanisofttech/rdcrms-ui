@@ -5,7 +5,7 @@ import { Mandal } from '../model/mandal.model';
 import { State } from '../model/state.model';
 import { Village } from '../model/village.model';
 import { LocationFilterServiceService } from './service/location-filter-service.service';
-import { FilterResourceApplicationResponse } from '../model/FilterResourceApplicationResponse';
+import { FilterResourceApplicationResponse } from '../model/filter-resource-application-response';
 
 @Component({
   selector: 'app-location-filter',
@@ -22,7 +22,6 @@ export class LocationFilterComponent implements OnInit {
   selectedMandal: string = '';
   selectedVillage: string = '';
 
-  // Arrays for dropdown options
   countries: Country[] = [];
   states: State[] = [];
   districts: District[] = [];
@@ -139,18 +138,11 @@ export class LocationFilterComponent implements OnInit {
   locationReports: FilterResourceApplicationResponse[] = [];
 
   onSubmit() {
-    console.log("🎯 Final Selections:");
-    console.log("Country:", this.selectedCountry);
-    console.log("State:", this.selectedState);
-    console.log("District:", this.selectedDistrict);
-    console.log("Mandal:", this.selectedMandal);
-    console.log("Village:", this.selectedVillage);
-
     this.locationService.getFilterOfResourceAllocation(this.selectedCountry,
       this.selectedState, this.selectedDistrict, this.selectedMandal,
       this.selectedVillage).subscribe(
         (response: FilterResourceApplicationResponse[] | null | undefined) => {
-          if (response && response.length > 0) { // Check if response is not null/undefined and contains data
+          if (response && response.length > 0) { 
             this.locationReports = response;
             this.isNoInfo = true;
             this.updateCharts();
@@ -162,17 +154,12 @@ export class LocationFilterComponent implements OnInit {
             console.log("No data found");
             this.isNoInfo = false;
             this.isDataPresent = false;
-            this.isNotThereData = true; // Set to false when no data is returned
+            this.isNotThereData = true;
           }
-          // this.selectedCountry='';
-          // this.selectedState='';
-          // this.selectedDistrict='';
-          // this.selectedMandal='';
-          // this.selectedVillage='';
         },
         (error) => {
           console.error("Error fetching data:", error);
-          this.isDataPresent = false; // Ensure UI updates correctly on error
+          this.isDataPresent = false; 
         }
       );
   }
@@ -183,7 +170,7 @@ export class LocationFilterComponent implements OnInit {
     const approvedValues = this.locationReports.map(item => item.applicationsApproved);
     const rejectedValues = this.locationReports.map(item => item.applicationsRejected);
 
-    /** ✅ Bar Chart */
+   
     this.basicData = {
       labels: labels,
       datasets: [
@@ -219,10 +206,10 @@ export class LocationFilterComponent implements OnInit {
         label: 'Application Status',
         backgroundColor: ['#42A5F5', '#66BB6A', '#66BB6A', '#FF6384'],
         data: [
-          receivedValues.reduce((acc, val) => acc + val, 0),  // Total received
+          receivedValues.reduce((acc, val) => acc + val, 0),  
           inprogressValues.reduce((acc, val) => acc + val, 0),
-          approvedValues.reduce((acc, val) => acc + val, 0),  // Total approved
-          rejectedValues.reduce((acc, val) => acc + val, 0)   // Total rejected
+          approvedValues.reduce((acc, val) => acc + val, 0),  
+          rejectedValues.reduce((acc, val) => acc + val, 0)  
         ]
       }]
     };
