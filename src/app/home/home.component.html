@@ -1,38 +1,37 @@
 <div class="bg">
-    <div class="container">
-        <!-- Left Column -->
-        <p-toast />
-        <div class="left-column">
-          <img src="/assets/logo2.svg" alt="hello" width="300px" height="300px" style="color: white;" />
-          <h3><b>RDCRMS</b></h3>
-          <p>Revenue department certificates real-time<br>monitoring system.We provide the certificates<br> and provide the real-time monitoring.. </p>
+  <div class="container">
+    <!-- Left Column -->
+    <p-toast />
+    <div class="left-column">
+      <img src="/assets/logo2.svg" alt="hello" width="300px" height="300px" style="color: white;" />
+      <h3><b>RDCRMS</b></h3>
+      <p>Revenue department certificates real-time<br>monitoring system.We provide the certificates<br> and provide the
+        real-time monitoring.. </p>
+    </div>
+    <!-- Right Column -->
+    <div class="right-column">
+      <form class="f1">
+        <div class="cn">
+          <label for="username"><b>Username or email</b></label><br>
+          <input type="text" id="aadhaarNumber" name="aadhaarNumber" [(ngModel)]="aadhaarNumber"
+            placeholder="johnsmith007" />
+          <label for="password"><b>Password</b></label><br>
+          <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="*********" />
+          <a routerLink="/change-password">Change password?</a>
+          <button type="button" (click)="onValidateLogin()">Sign in</button>
+          <p class="or">------- or -------</p>
+          <p id="sign"><svg style="width: 12px;" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 488 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
+            </svg> Sign in with Google</p>
         </div>
-        
-        <!-- Right Column -->
-        <div class="right-column">
-          <form class="f1">
-            <div class="cn">
-              <label for="username"><b>Username or email</b></label><br>
-              <input type="text" id="aadhaarNumber" name="aadhaarNumber" [(ngModel)]="aadhaarNumber" placeholder="johnsmith007"/>
-              <label for="password"><b>Password</b></label><br>
-              <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="*********"/>
-              <a routerLink="/change-password">Change password?</a>
-             <!--<button type="submit"><b>SIGN IN</b></button>-->
-              <button type="button" (click)="onValidateLogin()">Sign in</button>
-              <p class="or">------- or -------</p>
-              <p id="sign"><svg style="width: 12px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg>    Sign in with Google</p>
-            </div>
-          </form>
-          <p class="footer">Are you new? <a routerLink="/register">Create an account</a></p>
-          
-           <div *ngIf="showSpinner" class="flex justify-content-center" style="margin-top: 20px;">
-              <p-progressSpinner strokeWidth="8" fill="var(--surface-ground)"
-                  animationDuration=".5s"></p-progressSpinner>
-          </div>
-        </div>
+      </form>
+      <p class="footer">Are you new? <a routerLink="/register">Create an account</a></p>
+
+      <div *ngIf="showSpinner" class="flex justify-content-center" style="margin-top: 20px;">
+        <p-progressSpinner strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
       </div>
+    </div>
+  </div>
 </div>
-
-
-
-
