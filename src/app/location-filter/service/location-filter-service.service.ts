@@ -19,18 +19,12 @@ export class LocationFilterServiceService {
   localApiRevenue = "http://localhost:5000/api/revenue/";
 
   public getFilterOfResourceAllocation(country: any, state: any, district: any, mandal: any, village: any): Observable<FilterResourceApplicationResponse[]> {
-    if (!country) {
-      //return throwError(() => new Error("Country parameter is required"));
-      console.log("hi")
-    }
-  
-    // Filter out null, undefined, or empty string values
+
     const params = [country, state, district, mandal, village]
       .filter(param => param !== null && param !== undefined && param !== '');
-  
-    // Construct URL dynamically without trailing slashes
+
     this.localApiUrl = `http://localhost:5000/api/filter-certificate-location/${params.join('/')}`;
-  
+
     return this.http.get<FilterResourceApplicationResponse[]>(this.localApiUrl);
   }
 
