@@ -1,134 +1,155 @@
-.bg {
-    background-color: #C3E0CC;
-    height: 100%;
-    width: 100%;
-    padding: 10px;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
+.bg {
+	background-image: url("/assets/Windy.jpg");
+	position: fixed;
+	/* Ensures it covers the whole screen */
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-size: cover;
+	/* Cover the entire screen */
+	background-position: center;
+	background-repeat: no-repeat;
+	/* Prevent repeating */
+	z-index: -1;
+}
+
+
 .container {
-    display: flex;
-    height: 90vh;
-    width: 90%;
-    margin-left: 100px;
-    border-radius: 100px;
-    margin-top: 40px;
+	display: flex;
+	height: 85vh;
+	width: 69%;
+	margin-left: 250px;
+	border-radius: 50px;
+	margin-top: 55px;
 }
 
 .left-column {
-    flex: 1;
-    background-color: #E6FEEE;
-    padding: 30px;
-    text-align: center;
+	flex: 1;
+	background-color: rgb(1, 38, 69);
+	padding: 30px;
+	text-align: center;
+	border-radius: 30px 0px 0px 30px;
+
 }
 
 .left-column h3 {
-    font-size: 35px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-top: 300px;
+	font-size: 35px;
+	margin-top: 50px;
+	color: white;
 }
 
 .left-column p {
-    font-size: 15px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: gray;
+	font-size: 15px;
+	color: rgb(255, 255, 255);
 }
 
 .right-column {
-    flex: 0.7;
-    background-color: #FAFFFB;
-    align-items: center;
-    justify-content: center;
-    padding: 5rem;
-    padding-right: 40px;
+	flex: 0.7;
+	background-color: #ffffff;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	padding: 5rem;
+	padding-right: 20px;
+	border-radius: 0px 30px 30px 0px;
 }
 
 .cn {
-    margin-top: 150px;
-    margin-right: 150px;
-    position: relative;
-    font-size: 14px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: rgb(171, 170, 170);
-    border-spacing: 30px;
-    text-align: left;
+	margin-top: 100px;
+	margin-right: 150px;
+	position: relative;
+	font-size: 14px;
+	color: rgb(171, 170, 170);
+	border-spacing: 30px;
+	text-align: left;
+	align-items: center;
 }
 
 #aadhaarNumber {
-    background-color: #ffffff;
-    border-radius: 5px;
-    border-color: rgb(201, 198, 198);
-    width: 280px;
-    height: 30px;
-    text-align: left;
-    color: black;
-    font-size: 13px;
-    margin: 8px 0;
-    padding: 5px 20px;
-    display: flex;
-    flex-direction: column;
+	background-color: #ffffff;
+	border-radius: 5px;
+	border-color: #D0DDD0;
+	width: 280px;
+	height: 30px;
+	text-align: left;
+	color: black;
+	font-size: 15px;
+	margin: 8px 0;
+	padding: 5px 20px;
+	display: flex;
+	flex-direction: column;
+	margin-left: 50px;
+}
+
+label {
+	margin-left: 50px;
 }
 
 #password {
-    background-color: #ffffff;
-    border-radius: 5px;
-    border-color: rgb(201, 198, 198);
-    width: 280px;
-    height: 30px;
-    text-align: left;
-    color: black;
-    font-size: 13px;
-    margin: 8px 0;
-    padding: 5px 20px;
-    display: flex;
-    flex-direction: column;
+	background-color: #ffffff;
+	border-radius: 5px;
+	border-color: #D0DDD0;
+	width: 280px;
+	height: 30px;
+	text-align: left;
+	color: black;
+	font-size: 15px;
+	margin: 8px 0;
+	padding: 5px 20px;
+	display: flex;
+	flex-direction: column;
+	margin-left: 50px;
 }
 
 .cn a {
-    color: green;
-    margin-left: 190px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 13px;
+	color: green;
+	margin-left: 210px;
+	font-size: 13px;
 }
 
 button {
-    background-color: black;
-    color: white;
-    padding: 12px 35px;
-    margin: 10px 0;
-    border: none;
-    cursor: pointer;
-    width: 96%;
-    border-radius: 5px;
-    margin-top: 20px;
+	background-color: rgb(1, 38, 69);
+	color: white;
+	padding: 12px 35px;
+	margin: 10px 0;
+	border: none;
+	cursor: pointer;
+	width: 280px;
+	height: 40px;
+	border-radius: 5px;
+	margin-top: 20px;
+	margin-left: 50px;
 }
 
-p {
-    text-align: center;
-    font-size: 17px;
+.cn p {
+	text-align: center;
+	font-size: 17px;
+	margin-left: 70px;
 }
 
-.sign {
-    text-align: center;
-    font-size: 13px;
+#sign {
+	text-align: center;
+	font-size: 13px;
+	margin-top: 10px;
 }
 
 .footer a {
-    margin-bottom: 20px;
-    font-size: 13px;
-    padding-right: 120px;
-    color: green;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	margin-bottom: 20px;
+	font-size: 13px;
+	padding-right: 100px;
+	color: green;
 }
 
 .footer {
-    font-size: 13px;
-    color: gray;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-/* Optional: Ensure content is responsive */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
+	font-size: 13px;
+	color: gray;
+	margin-left: 100px;
+	margin-top: 10px;
 }
