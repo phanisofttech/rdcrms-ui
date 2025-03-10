@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="grid">
+    <div class="col-3">
+      <form (ngSubmit)="onSubmit()">
+        <label for="country">Country:</label>
+        <select id="country" name="country" (change)="onCountryChange($event)">
+          <option value="">--Select Country--</option>
+          <option *ngFor="let country of countries" [value]="country.countryName">{{ country.countryName }}</option>
+        </select>
+
+        <!-- State Dropdown -->
+        <div *ngIf="states.length > 0">
+          <label for="state">State:</label>
+          <select id="state" name="state" (change)="onStateChange($event)">
+            <option value="">--Select State--</option>
+            <option *ngFor="let state of states" [value]="state.stateName">{{ state.stateName }}</option>
+          </select>
+        </div>
+
+        <!-- District Dropdown -->
+        <div *ngIf="districts.length > 0">
+          <label for="district">District:</label>
+          <select id="district" name="district" (change)="onDistrictChange($event)">
+            <option value="">--Select District--</option>
+            <option *ngFor="let district of districts" [value]="district.districtName">{{ district.districtName }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Mandal Dropdown -->
+        <div *ngIf="mandals.length > 0">
+          <label for="mandal">Mandal:</label>
+          <select id="mandal" name="mandal" (change)="onMandalChange($event)">
+            <option value="">--Select Mandal--</option>
+            <option *ngFor="let mandal of mandals" [value]="mandal.mandalName">{{ mandal.mandalName }}</option>
+          </select>
+        </div>
+
+        <!-- Village Dropdown -->
+        <div *ngIf="villages.length > 0">
+          <label for="village">Village:</label>
+          <select id="village" name="village" (change)="onVillageChange($event)">
+            <option value="">--Select Village--</option>
+            <option *ngFor="let village of villages" [value]="village.villageName">{{ village.villageName }}</option>
+          </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+      </form>
+      </div>
+      <div class="col-9">
+        <div *ngIf="isDataPresent">
+          <p-table [value]="locationReports" responsiveLayout="scroll" class="custom-table">
+            <ng-template pTemplate="header">
+              <tr>
+                <!-- <th>Country</th> -->
+                <th>State</th>
+                <th>District</th>
+                <th>Mandal</th>
+                <th>Village</th>
+                <th>Application Recevied</th>
+                <th>Application Inprogress</th>
+                <th>Application Approved</th>
+                <th>Application Rejected</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-locationReports>
+              <tr>
+                <!-- <td>{{locationReports.country}}</td> -->
+                <td>{{locationReports.state}}</td>
+                <td>{{locationReports.district}}</td>
+                <td>{{locationReports.mandal}}</td>
+                <td>{{locationReports.village}}</td>
+                <td>{{locationReports.applicationsRecevied}}</td>
+                <td>{{locationReports.applicationsInprogress}}</td>
+                <td>{{locationReports.applicationsApproved}}</td>
+                <td>{{locationReports.applicationsRejected}}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <div *ngIf="isNotThereData">
+          <h1>No Data Found</h1>
+        </div>
+      </div>
+    </div>
+    <div class="grid" *ngIf="isNoInfo">
+      <div class="col-8">
+        <div class="card">
+          <p-chart type="bar" [data]="basicData" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <p-chart type="pie" [data]="pieData" />
+        </div>
+      </div>
+    </div>
+  </div>
