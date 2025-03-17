@@ -19,7 +19,6 @@ const routes: Routes = [
  { path: "", component: HomeComponent},
  { path: "home", component: HomeComponent},
  { path: "register", component: UserRegisterationComponent},
- { path: "change-password", component:ChangePasswordComponent},
  { path: "dashboard", component: DashboardComponent, 
  children: [
   { path: "", component: ReportsComponent},
@@ -30,7 +29,8 @@ const routes: Routes = [
   { path: "birth", component:BirthComponent},
   { path: "death", component:DeathComponent},
   { path: "time-filter", component: TimeFilterComponent},
-  { path: "location-filter", component: LocationFilterComponent}
+  { path: "location-filter", component: LocationFilterComponent},
+  { path: "change-password", component:ChangePasswordComponent},
 ]},
 
 ];

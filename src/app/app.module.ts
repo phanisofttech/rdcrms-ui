@@ -42,7 +42,7 @@ import { LocationFilterComponent } from './location-filter/location-filter.compo
     IncomeComponent,
     BirthComponent,
     DeathComponent,
-    ChangePasswordComponent,
+    ChangePasswordComponent,  
     TimeFilterComponent,
     LocationFilterComponent
   ],

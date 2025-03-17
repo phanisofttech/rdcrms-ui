@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { ChangePasswordServiceService } from './service/change-password-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-change-password',
@@ -12,11 +13,11 @@ export class ChangePasswordComponent {
 
   changePasswordForm: FormGroup;
   public showSpinner: boolean = false;
-  public isPasswordChanged : boolean=false;
 
   constructor(private fb: FormBuilder,
     private changePasswordService : ChangePasswordServiceService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router : Router
     ) {
     this.changePasswordForm = this.fb.group(
       {
@@ -40,12 +41,10 @@ export class ChangePasswordComponent {
       errors['passwordMismatch'] = true;
     }
 
-    // Check if oldPassword and newPassword are the same
     if (oldPassword === newPassword) {
       errors['sameAsOldPassword'] = true;
     }
 
-    // Return errors if any, otherwise null
     return Object.keys(errors).length > 0 ? errors : null;
   }
 
@@ -67,8 +66,8 @@ export class ChangePasswordComponent {
             this.messageService.add({ severity: 'error', summary: "Password update failed. Please check the details" });
           }else {
             this.showSpinner=false;
-            this.isPasswordChanged=true;
             this.messageService.add({ severity: 'success', summary: "Password Changed" });
+            this.router.navigate(['/home']);
           }
           
         },

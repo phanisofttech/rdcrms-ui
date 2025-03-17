@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { OtpResponse } from '../../model/otp-response';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +13,11 @@ export class RegistrationServiceService {
 
   constructor(private http: HttpClient) { }
 
-
-  public getOTPByAadhaarNumber(aadhaarNumber: number) {
-    return this.http.post(this.localApiUrl + `otp/${aadhaarNumber}`, "");
+  public getOTPByAadhaarNumber(aadhaarNumber: number): Observable<OtpResponse> {
+    return this.http.post<OtpResponse>(this.localApiUrl + `otp/${aadhaarNumber}`, "");
   }
 
-  getPasswordByOtp(otp: number, aadhaarNumber: number) {
-    return this.http.post(this.localApiUrl + `password/${aadhaarNumber}/${otp}`, " ");
+  getPasswordByOtp(otp: number, aadhaarNumber: number): Observable<OtpResponse> {
+    return this.http.post<OtpResponse>(this.localApiUrl + `password/${aadhaarNumber}/${otp}`, " ");
   }
 }
