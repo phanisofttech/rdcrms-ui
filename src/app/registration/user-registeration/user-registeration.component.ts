@@ -53,6 +53,7 @@ export class UserRegisterationComponent{
         if (response.statusCodeValue === 401) {
           this.isPasswordSent = false;
         } else {
+          alert("Registration Completed.Click OK to navigate home page");
           this.router.navigate(['/home']);
         }
       },

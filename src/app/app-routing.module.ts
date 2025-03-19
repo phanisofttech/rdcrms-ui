@@ -13,6 +13,7 @@ import { DeathComponent } from './death/death.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { TimeFilterComponent } from './time-filter/time-filter.component';
 import { LocationFilterComponent } from './location-filter/location-filter.component';
+import { WebsiteTrafficComponent } from './website-traffic/website-traffic.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: "time-filter", component: TimeFilterComponent},
   { path: "location-filter", component: LocationFilterComponent},
   { path: "change-password", component:ChangePasswordComponent},
+  { path: "website-traffic", component:WebsiteTrafficComponent}
 ]},
 
 ];
