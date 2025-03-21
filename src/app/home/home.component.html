@@ -12,11 +12,11 @@
     <div class="right-column">
       <form class="f1">
         <div class="cn">
-          <label for="username"><b>Username or email</b></label><br>
+          <label for="username"><b>Aadhaar Number</b></label><br>
           <input type="text" id="aadhaarNumber" name="aadhaarNumber" [(ngModel)]="aadhaarNumber"
-            placeholder="johnsmith007" />
+            placeholder="Enter Your Aadhaar Number" />
           <label for="password"><b>Password</b></label><br>
-          <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="*********" />
+          <input type="password" id="password" name="password" [(ngModel)]="password"placeholder="**********"/>
           <a routerLink="/change-password">Change password?</a>
           <button type="button" (click)="onValidateLogin()">Sign in</button>
           <p class="or">------- or -------</p>
