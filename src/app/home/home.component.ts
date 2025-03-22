@@ -31,6 +31,7 @@ export class HomeComponent {
 
         if (message === 'Login successfull' && statusCode === 'OK' && statusCodeValue === 200) {
           this.showSpinner = false;
+          localStorage.setItem('currentUser', this.aadhaarNumber);
           this.router.navigate(['/dashboard']);
         } else {
           this.show();

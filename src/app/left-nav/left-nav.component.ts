@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 
 
 @Component({
@@ -8,6 +9,19 @@ import { Component } from '@angular/core';
 })
 export class LeftNavComponent {
 
+
+  private adminUsers: string[] = ['251113744911', '123456789000', '987654321111'];
+  private currentUser: string = "0"; // Default value
+  isAdmin: boolean = false;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+    if (isPlatformBrowser(this.platformId)) {  // Check if it's running in the browser
+      this.currentUser = localStorage.getItem('currentUser') || "0";
+      this.isAdmin = this.adminUsers.includes(this.currentUser);
+      console.log("Current User:", this.currentUser);
+      console.log("Is Admin:", this.isAdmin);
+    }
+  }
   toggeleMenu(): void {
     let className = document.getElementById('side-bar')?.className;
     let ele: any = document.getElementById('side-bar') == null ? "" : document.getElementById('side-bar');

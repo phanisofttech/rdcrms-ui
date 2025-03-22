@@ -26,6 +26,7 @@ import { DeathComponent } from './death/death.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { TimeFilterComponent } from './time-filter/time-filter.component';
 import { LocationFilterComponent } from './location-filter/location-filter.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { LocationFilterComponent } from './location-filter/location-filter.compo
     DeathComponent,
     ChangePasswordComponent,
     TimeFilterComponent,
-    LocationFilterComponent
+    LocationFilterComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

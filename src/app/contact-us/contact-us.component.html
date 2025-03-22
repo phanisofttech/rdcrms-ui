@@ -1,0 +1,29 @@
+<div class="contact-container">
+  <h2>Contact Us</h2>
+
+  <form (ngSubmit)="openGmail()">
+    <input
+      type="text"
+      [(ngModel)]="name"
+      name="name"
+      placeholder="Your Name"
+      required
+    />
+    <input
+      type="subject"
+      [(ngModel)]="subject"
+      name="suubject"
+      placeholder="Enter your Reason for Contact "
+      required
+    />
+    <textarea
+      [(ngModel)]="message"
+      name="message"
+      rows="4"
+      placeholder="Your Message"
+      required
+    ></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</div>
