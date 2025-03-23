@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { RegistrationServiceService } from '../service/registration-service.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { OtpResponse } from '../../model/otp-response';
 
 @Component({
   selector: 'app-user-registeration',
   templateUrl: './user-registeration.component.html',
   styleUrl: './user-registeration.component.css'
 })
-export class UserRegisterationComponent implements OnInit {
+export class UserRegisterationComponent{
 
   public aadhaarNumber: any;
   public otp: any;
@@ -23,31 +24,38 @@ export class UserRegisterationComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-  }
-
   onValidateAadhaarNumber() {
     this.showSpinner = true;
     this.regService.getOTPByAadhaarNumber(this.aadhaarNumber).subscribe(
-      response => {
+      (response: OtpResponse) => {
         this.assignToMessage(response);
-        this.isOtpSent = true;
+        if (response.statusCodeValue === 404) {
+          this.isOtpSent = false;
+        } else {
+          this.isOtpSent = true;
+          this.showSpinner = false;
+        }
       },
-      (error: Error) => {
-        this.messageService.add({ severity: 'error', summary: "Failed to send generate OTP" });
+      (error: any) => {
+        this.messageService.add({ severity: 'error', summary: "Failed to generate OTP" });
         this.showSpinner = false;
+        this.isOtpSent = false;
       }
-
     );
   }
 
   onVerifyOtp() {
     this.showSpinner = true;
     this.regService.getPasswordByOtp(this.otp, this.aadhaarNumber).subscribe(
-      response => {
+      (response: OtpResponse) => {
         this.showSpinner = false;
         this.assignToMessage(response);
-        this.isPasswordSent = true;
+        if (response.statusCodeValue === 401) {
+          this.isPasswordSent = false;
+        } else {
+          alert("Registration Completed.Click OK to navigate home page");
+          this.router.navigate(['/home']);
+        }
       },
       error => {
         this.showSpinner = false;
@@ -58,7 +66,13 @@ export class UserRegisterationComponent implements OnInit {
 
   assignToMessage(resp: any) {
     this.message = resp.message;
-    this.messageService.add({ severity: 'success', summary: this.message });
+    if (this.message.includes('User not found with the Aadhaar Number')) {
+      this.messageService.add({ severity: 'error', summary: this.message });
+    } else if (this.message.includes('Incorrect OTP')) {
+      this.messageService.add({ severity: 'error', summary: this.message });
+    } else {
+      this.messageService.add({ severity: 'success', summary: this.message });
+    }
     this.showSpinner = false;
   }
 
