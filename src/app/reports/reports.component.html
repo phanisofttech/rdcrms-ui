@@ -1,40 +1,40 @@
 <div class="container">
-    <div id="table-row" class="row">
-        <div class="col">
-            <div id="report-table" class="col">
-                <p-table [value]="certificateCounts" [responsiveLayout]="'scroll'" class="p-datatable-striped">
-                    <ng-template pTemplate="header">
-                      <tr id="headers">
-                        <th>CERTIFICATE TYPE</th>
-                        <th>TOTAL RECEIVIED</th>
-                        <th>INPROGRESS</th>
-                        <th>COMPLETED</th>
-                        <th>REJECTED</th>
-                      </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-certificateCount>
-                      <tr id="values">
-                        <td>{{ certificateCount.certificateType }}</td>
-                        <td>{{ certificateCount.totalCount }}</td>
-                        <td>{{ certificateCount.inProgressCertificateCount }}</td>
-                        <td>{{ certificateCount.completedCertificateCount }}</td>
-                        <td>{{ certificateCount.rejectedCertificateCount }}</td>
-                      </tr>
-                    </ng-template>
-                  </p-table>
-            </div>
-        </div>
+  <div id="table-row" class="row">
+    <div class="col">
+      <div id="report-table" class="col">
+        <p-table [value]="certificateCounts" [responsiveLayout]="'scroll'" class="p-datatable-striped">
+          <ng-template pTemplate="header">
+            <tr id="headers">
+              <th>CERTIFICATE TYPE</th>
+              <th>TOTAL RECEIVIED</th>
+              <th>INPROGRESS</th>
+              <th>COMPLETED</th>
+              <th>REJECTED</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-certificateCount>
+            <tr id="values">
+              <td>{{ certificateCount.certificateType }}</td>
+              <td>{{ certificateCount.totalCount }}</td>
+              <td>{{ certificateCount.inProgressCertificateCount }}</td>
+              <td>{{ certificateCount.completedCertificateCount }}</td>
+              <td>{{ certificateCount.rejectedCertificateCount }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
     </div>
-    <div class="row">
-        <div class="col-8">
-            <div class="card">
-                <p-chart type="bar" [data]="basicData" />
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card">
-                <p-chart type="pie" [data]="pieData" />
-            </div>
-        </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <div class="card">
+        <p-chart type="bar" [data]="basicData" />
+      </div>
     </div>
+    <div class="col-4">
+      <div class="card">
+        <p-chart type="pie" [data]="pieData" />
+      </div>
+    </div>
+  </div>
 </div>

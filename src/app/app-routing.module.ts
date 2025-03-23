@@ -14,7 +14,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { TimeFilterComponent } from './time-filter/time-filter.component';
 import { LocationFilterComponent } from './location-filter/location-filter.component';
 import { WebsiteTrafficComponent } from './website-traffic/website-traffic.component';
-
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const routes: Routes = [
  { path: "", component: HomeComponent},
@@ -32,7 +32,8 @@ const routes: Routes = [
   { path: "time-filter", component: TimeFilterComponent},
   { path: "location-filter", component: LocationFilterComponent},
   { path: "change-password", component:ChangePasswordComponent},
-  { path: "website-traffic", component:WebsiteTrafficComponent}
+  { path: "website-traffic", component:WebsiteTrafficComponent},
+  { path: "contact-us", component: ContactUsComponent}
 ]},
 
 ];
