@@ -10,7 +10,7 @@ import { Component, Inject, PLATFORM_ID } from '@angular/core';
 export class LeftNavComponent {
 
 
-  private adminUsers: string[] = ['251113744911', '123456789000', '987654321111'];
+  private adminUsers: string[] = ['987654321111', '626641807205', '945271849457'];
   private currentUser: string = "0"; // Default value
   isAdmin: boolean = false;
 

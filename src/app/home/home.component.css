@@ -39,15 +39,10 @@
 
 }
 
-.left-column h3 {
-	font-size: 35px;
-	margin-top: 50px;
-	color: white;
-}
-
 .left-column p {
 	font-size: 15px;
 	color: rgb(255, 255, 255);
+	margin-top: -25px;
 }
 
 .right-column {

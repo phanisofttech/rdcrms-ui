@@ -9,7 +9,7 @@ export class ContactUsComponent {
     name = '';
     subject = '';
     message = '';
-    receiverMail = 'vemanajayakrishnachandra@gmail.com';
+    receiverMail = 'skysolutions.sky@gmail.com';
   
     openGmail() {
       const subject = encodeURIComponent(this.subject);
