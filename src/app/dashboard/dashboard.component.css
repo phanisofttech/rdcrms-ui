@@ -1,8 +1,14 @@
-.grid {
+#header {
     position: sticky;
-    top: 0%;
+    top: 0;
 }
-#right-body {
-    padding-top: 30px;
-    margin-left: -65px;
+
+.right-body {
+padding-top: 10px;
+  overflow-y: auto;
+  height: 85vh;
+}
+
+.left-nav-menu {
+    margin-top: -15px;
 }
