@@ -68,7 +68,7 @@ export class ChangePasswordComponent {
             this.showSpinner=false;
             this.messageService.add({ severity: 'success', summary: "Password Changed" });
             alert("Password Changed. Click OK to navigate to home page");
-            this.router.navigate(['/home']);
+            this.router.navigate(['student-page']);
           }
           
         },

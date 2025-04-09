@@ -2,6 +2,22 @@
     max-width: 1500px;
     margin: auto; 
   }
+
+  .bg {
+    background-image: url("/assets/Windy.jpg");
+    position: fixed;
+    /* Ensures it covers the whole screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    /* Cover the entire screen */
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Prevent repeating */
+    z-index: -1;
+  }
   
   .card {
     border-radius: 12px;
