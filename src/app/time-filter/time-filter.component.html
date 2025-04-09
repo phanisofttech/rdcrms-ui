@@ -1,6 +1,6 @@
 <div class="container">
 <div class="grid">
-  <div class="col-4">
+  <div class="col-3">
     <form (ngSubmit)="onSubmit()">
       <!-- Year Dropdown -->
       <label for="year">Year:</label>
@@ -29,7 +29,7 @@
     </form>
   </div>
   
-  <div class="col-8">
+  <div class="col-9">
     <div *ngIf="isDataPresent">
       <p-table [value]="timeReports" responsiveLayout="scroll" class="custom-table">
         <ng-template pTemplate="header">
